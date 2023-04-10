@@ -22,5 +22,6 @@ namespace Intex_group1_8
                 {
                     webBuilder.UseStartup<Startup>();
                 });
+
     }
 }

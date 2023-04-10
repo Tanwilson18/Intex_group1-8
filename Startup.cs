@@ -1,6 +1,7 @@
 using Intex_group1_8.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI;
@@ -36,6 +37,18 @@ namespace Intex_group1_8
             services.AddRazorPages();
 
 
+            services.Configure<CookiePolicyOptions>(options =>
+            {
+                // This lambda determines whether user consent for non-essential 
+                // cookies is needed for a given request.
+                options.CheckConsentNeeded = context => true;
+                // requires using Microsoft.AspNetCore.Http;
+                options.MinimumSameSitePolicy = SameSiteMode.None;
+            });
+
+
+
+
             services.Configure<IdentityOptions>(options =>
             {
                 // Default Password settings.
@@ -46,6 +59,8 @@ namespace Intex_group1_8
                 options.Password.RequiredLength = 20;
                 options.Password.RequiredUniqueChars = 1;
             });
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -64,6 +79,8 @@ namespace Intex_group1_8
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+            app.UseCookiePolicy();
+
 
             app.UseRouting();
 
