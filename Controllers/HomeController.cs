@@ -36,5 +36,10 @@ namespace Intex_group1_8.Controllers
         {
             return View();
         }
+
+        public IActionResult Privacy()
+        {
+            return View();
+        }
     }
 }
