@@ -41,7 +41,7 @@ namespace Intex_group1_8
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddDbContext<intex2Context>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("MummyDbConnection")));
+                options.UseNpgsql(Configuration.GetConnectionString("MummyDbConnection")));
 
             services.AddScoped<IBurialmainRepository, EFBurialmainRepository>();
 

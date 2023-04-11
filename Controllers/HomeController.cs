@@ -30,20 +30,23 @@ namespace Intex_group1_8.Controllers
 
             int pageSize = 10;
 
-            var returnList = new BurialmainViewModel
-            {
-                // Grabbing Burialmains from DB for each page
-                Burialmains = repo.Burialmains,
-                // Insert Filtering stuff
+            List<Burialmain> returnList = new List<Burialmain>();
+            returnList = repo.Burialmains.ToList();
 
-                // Creating PageInfo for BurialmainViewModel
-                PageInfo = new PageInfo
-                {
-                    // Insert Filtering stuff
-                    ResultsPerPage = pageSize,
-                    CurrentPage = pageNum
-                }
-            };
+            //var returnList = new BurialmainViewModel
+            //{
+            //    // Grabbing Burialmains from DB for each page
+            //    Burialmains = repo.Burialmains,
+            //    // Insert Filtering stuff
+
+            //    // Creating PageInfo for BurialmainViewModel
+            //    PageInfo = new PageInfo
+            //    {
+            //        // Insert Filtering stuff
+            //        ResultsPerPage = pageSize,
+            //        CurrentPage = pageNum
+            //    }
+            //};
 
             return View(returnList);
         }
