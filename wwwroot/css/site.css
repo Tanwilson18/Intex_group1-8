@@ -1,6 +1,10 @@
 ﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 for details on configuring this project to bundle and minify static web assets. */
 
+body {
+    margin: 0;
+    font-family: sans-serif;
+}
 a.navbar-brand {
   white-space: normal;
   text-align: center;
@@ -69,3 +73,136 @@ body {
   white-space: nowrap;
   line-height: 60px; /* Vertically center the text there */
 }
+/*hero image form video*/
+
+}
+
+/* Add some content at the bottom of the video/page */
+.hero {
+    height: 100vh`;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.hero-text {
+    color: #fff;
+    padding: 0 1rem 2rem;
+}
+
+    .hero-text h1 {
+        font-size: clamp(2rem, 9vw, 8rem);
+        line-height: 1;
+        margin: 0;
+        color: #fff;
+        mix-blend-mode: difference;
+        /* screen, overlay, multiply, difference... */
+    }
+
+
+.video-background {
+    background: #000;
+    position: absolute;
+    inset: 0;
+    z-index: -99;
+}
+
+    .video-foreground,
+    .video-background iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+
+
+.hero {
+    position: relative;
+}
+
+    .hero .overlay {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgb(0, 0, 0, .2);
+    }
+
+    .hero h1 {
+        color: seashell;
+        font-size: 5rem;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, .4);
+    }
+
+    .hero p {
+        margin: 0;
+    }
+
+
+/*    Fade for the hero image*/
+.fade-in {
+    animation: fadeIn ease 7s;
+    -webkit-animation: fadeIn ease 7s;
+    -moz-animation: fadeIn ease 7s;
+    -o-animation: fadeIn ease 7s;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@-moz-keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@-o-keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@-ms-keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }

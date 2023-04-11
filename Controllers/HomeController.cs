@@ -1,4 +1,5 @@
 ﻿using Intex_group1_8.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -21,6 +22,7 @@ namespace Intex_group1_8.Controllers
         {
             return View();
         }
+
 
         public IActionResult Supervised()
         {

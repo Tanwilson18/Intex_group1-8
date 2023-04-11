@@ -32,7 +32,13 @@ namespace Intex_group1_8
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews();
             services.AddRazorPages();
-
+            //this is for role based access
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("RequireAdministratorRole",
+                     policy => policy.RequireRole("Administrator"));
+            });
+            // this is for the login and register DB
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
@@ -47,7 +53,7 @@ namespace Intex_group1_8
 
 
 
-
+            // this is password reqs
             services.Configure<IdentityOptions>(options =>
             {
                 // Default Password settings.
@@ -85,6 +91,13 @@ namespace Intex_group1_8
 
             app.UseAuthentication();
             app.UseAuthorization();
+
+            //CSP header (FIX THIS BEFORE SUMBISSION!!!!!!!!!!)))))))))
+            //app.Use(async (context, next) => {
+            //    context.Response.Headers.Add("Content-Security-Policy",  "script-src 'self'; style-src 'self'; img-src 'self'; frame-src 'self' https://www.youtube.com/");
+
+            //    await next();
+            //});
 
             app.UseEndpoints(endpoints =>
             {
