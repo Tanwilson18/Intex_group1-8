@@ -14,17 +14,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+
 namespace Intex_group1_8
 {
     public class Startup
     {
-<<<<<<< HEAD
-        public Startup(IConfiguration configuration)
-        {
-            Configuration = configuration;
-        }
-        public IConfiguration Configuration { get; }
-=======
         public IConfiguration Configuration { get; }
 
         public Startup(IConfiguration config)
@@ -32,7 +26,6 @@ namespace Intex_group1_8
             Configuration = config;
         }
 
->>>>>>> WIN32_Exception
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
@@ -40,11 +33,6 @@ namespace Intex_group1_8
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews();
             services.AddRazorPages();
-<<<<<<< HEAD
-
-            services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-=======
             services.AddHttpContextAccessor();
             services.AddMvc();
             services.AddControllersWithViews();
@@ -54,15 +42,9 @@ namespace Intex_group1_8
 
             services.AddDbContext<intex2Context>(options =>
                 options.UseNpgsql(Configuration.GetConnectionString("MummyDbConnection")));
->>>>>>> WIN32_Exception
 
             services.AddScoped<IBurialmainRepository, EFBurialmainRepository>();
 
-            services.AddAuthorization(options =>
-            {
-                options.AddPolicy("RequireAdministratorRole",
-                     policy => policy.RequireRole("Administrator"));
-            });
             services.Configure<CookiePolicyOptions>(options =>
             {
                 // This lambda determines whether user consent for non-essential 
@@ -71,11 +53,8 @@ namespace Intex_group1_8
                 // requires using Microsoft.AspNetCore.Http;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
-<<<<<<< HEAD
-=======
 
 
->>>>>>> WIN32_Exception
             services.Configure<IdentityOptions>(options =>
             {
                 // Default Password settings.
@@ -88,10 +67,8 @@ namespace Intex_group1_8
             });
 
 
-
-
-
         }
+
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
@@ -112,12 +89,6 @@ namespace Intex_group1_8
             app.UseRouting();
             app.UseAuthentication();
             app.UseAuthorization();
-            //CSP header (FIX THIS BEFORE SUMBISSION!!!!!!!!!!)))))))))
-            //app.Use(async (context, next) => {
-            //    context.Response.Headers.Add("Content-Security-Policy",  "script-src 'self'; style-src 'self'; img-src 'self'; frame-src 'self' https://www.youtube.com/");
-
-            //    await next();
-            //});
 
             app.UseEndpoints(endpoints =>
             {

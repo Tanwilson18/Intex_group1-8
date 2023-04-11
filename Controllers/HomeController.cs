@@ -1,9 +1,6 @@
 ﻿using Intex_group1_8.Models;
-<<<<<<< HEAD
 using Microsoft.AspNetCore.Authorization;
-=======
 using Intex_group1_8.Models.ViewModels;
->>>>>>> WIN32_Exception
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
