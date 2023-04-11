@@ -1,0 +1,105 @@
+﻿
+
+.hero {
+height: 100vh;
+width: 100%;
+overflow: hidden;
+position: relative;
+display: flex;
+align-items: center;
+justify-content: center;
+background-color: rgba(0, 0, 0, 0.2);
+}
+
+.hero-text {
+color: #fff;
+padding: 0 1rem 2rem;
+}
+
+.hero-text h1 {
+    font-size: clamp(2rem, 9vw, 8rem);
+    line-height: 1;
+    margin: 0;
+    color: #fff;
+        /*mix-blend-mode: difference;
+ screen, overlay, multiply, difference... */
+
+}
+
+
+.video-background {
+background: #000;
+position: absolute;
+inset: 0;
+z-index: -99;
+}
+
+.video-foreground,
+.video-background iframe {
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+}
+
+
+
+.hero {
+position: relative;
+}
+
+.hero .overlay {
+display: flex;
+justify-content: center;
+align-items: center;
+flex-direction: column;
+position: absolute;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+background-color: rgb(0, 0, 0, .2);
+}
+
+.hero h1 {
+color: seashell;
+font-size: 5rem;
+text-shadow: 1px 1px 2px rgba(0, 0, 0, .4);
+}
+
+.hero p {
+margin: 0;
+}
+
+
+@media (min-aspect-ratio: 16/9) {
+    .video-foreground {
+        height: 300%;
+        top: -100%;
+    }
+}
+
+@media (max-aspect-ratio: 16/9) {
+    .video-foreground {
+        width: 300%;
+        left: -100%;
+    }
+}
+
+@media (max-width: 600px) {
+    .vid-info {
+        width: 50%;
+        padding: 0.5rem;
+    }
+
+        .vid-info h1 {
+            margin-bottom: 0.2rem;
+        }
+}
+
+@media (max-width: 500px) {
+    .vid-info .acronym {
+        display: none;
+    }
+}
