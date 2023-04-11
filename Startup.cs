@@ -1,4 +1,5 @@
 using Intex_group1_8.Data;
+using Intex_group1_8.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -18,12 +19,12 @@ namespace Intex_group1_8
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
-        {
-            Configuration = configuration;
-        }
-
         public IConfiguration Configuration { get; }
+
+        public Startup(IConfiguration config)
+        {
+            Configuration = config;
+        }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -32,13 +33,17 @@ namespace Intex_group1_8
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews();
             services.AddRazorPages();
+            services.AddHttpContextAccessor();
+            services.AddMvc();
+            services.AddControllersWithViews();
+
             services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(
-                    Configuration.GetConnectionString("DefaultConnection")));
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
-            //services.AddDbContext<DbContext>(options =>
-            //    options.UseNpgsql(Configuration.GetConnectionString("MummyDbContext")));
+            services.AddDbContext<intex2Context>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("MummyDbConnection")));
 
+            services.AddScoped<IBurialmainRepository, EFBurialmainRepository>();
 
             services.Configure<CookiePolicyOptions>(options =>
             {
@@ -48,8 +53,6 @@ namespace Intex_group1_8
                 // requires using Microsoft.AspNetCore.Http;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
-
-
 
 
             services.Configure<IdentityOptions>(options =>
@@ -83,10 +86,7 @@ namespace Intex_group1_8
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
-
-
             app.UseRouting();
-
             app.UseAuthentication();
             app.UseAuthorization();
 

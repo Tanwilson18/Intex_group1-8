@@ -1,4 +1,5 @@
 ﻿using Intex_group1_8.Models;
+using Intex_group1_8.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -11,15 +12,40 @@ namespace Intex_group1_8.Controllers
 {
     public class HomeController : Controller
     {
+        private IBurialmainRepository repo;
+
+        // Constructor
+        public HomeController(IBurialmainRepository temp)
+        {
+            repo = temp;
+        }
 
         public IActionResult Index()
         {
             return View();
         }
 
-        public IActionResult BurialSummary()
+        public IActionResult BurialSummary(int pageNum = 1)
         {
-            return View();
+
+            int pageSize = 10;
+
+            var returnList = new BurialmainViewModel
+            {
+                // Grabbing Burialmains from DB for each page
+                Burialmains = repo.Burialmains,
+                // Insert Filtering stuff
+
+                // Creating PageInfo for BurialmainViewModel
+                PageInfo = new PageInfo
+                {
+                    // Insert Filtering stuff
+                    ResultsPerPage = pageSize,
+                    CurrentPage = pageNum
+                }
+            };
+
+            return View(returnList);
         }
 
         public IActionResult Supervised()
