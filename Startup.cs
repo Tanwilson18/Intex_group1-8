@@ -1,4 +1,5 @@
 using Intex_group1_8.Data;
+using Intex_group1_8.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -17,11 +18,21 @@ namespace Intex_group1_8
 {
     public class Startup
     {
+<<<<<<< HEAD
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
         }
         public IConfiguration Configuration { get; }
+=======
+        public IConfiguration Configuration { get; }
+
+        public Startup(IConfiguration config)
+        {
+            Configuration = config;
+        }
+
+>>>>>>> WIN32_Exception
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
@@ -29,10 +40,23 @@ namespace Intex_group1_8
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews();
             services.AddRazorPages();
+<<<<<<< HEAD
+
+            services.AddDbContext<ApplicationDbContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+=======
+            services.AddHttpContextAccessor();
+            services.AddMvc();
+            services.AddControllersWithViews();
 
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
+            services.AddDbContext<intex2Context>(options =>
+                options.UseNpgsql(Configuration.GetConnectionString("MummyDbConnection")));
+>>>>>>> WIN32_Exception
+
+            services.AddScoped<IBurialmainRepository, EFBurialmainRepository>();
 
             services.AddAuthorization(options =>
             {
@@ -47,6 +71,11 @@ namespace Intex_group1_8
                 // requires using Microsoft.AspNetCore.Http;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> WIN32_Exception
             services.Configure<IdentityOptions>(options =>
             {
                 // Default Password settings.
