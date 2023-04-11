@@ -13,7 +13,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-
 namespace Intex_group1_8
 {
     public class Startup
@@ -22,9 +21,7 @@ namespace Intex_group1_8
         {
             Configuration = configuration;
         }
-
         public IConfiguration Configuration { get; }
-
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
@@ -32,14 +29,16 @@ namespace Intex_group1_8
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews();
             services.AddRazorPages();
-            //this is for role based access
+
+            services.AddDbContext<ApplicationDbContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
+
             services.AddAuthorization(options =>
             {
                 options.AddPolicy("RequireAdministratorRole",
                      policy => policy.RequireRole("Administrator"));
             });
-            // this is for the login and register DB
-
             services.Configure<CookiePolicyOptions>(options =>
             {
                 // This lambda determines whether user consent for non-essential 
@@ -48,10 +47,6 @@ namespace Intex_group1_8
                 // requires using Microsoft.AspNetCore.Http;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
-
-
-
-            // this is password reqs
             services.Configure<IdentityOptions>(options =>
             {
                 // Default Password settings.
@@ -64,8 +59,10 @@ namespace Intex_group1_8
             });
 
 
-        }
 
+
+
+        }
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
@@ -83,13 +80,9 @@ namespace Intex_group1_8
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
-
-
             app.UseRouting();
-
             app.UseAuthentication();
             app.UseAuthorization();
-
             //CSP header (FIX THIS BEFORE SUMBISSION!!!!!!!!!!)))))))))
             //app.Use(async (context, next) => {
             //    context.Response.Headers.Add("Content-Security-Policy",  "script-src 'self'; style-src 'self'; img-src 'self'; frame-src 'self' https://www.youtube.com/");
