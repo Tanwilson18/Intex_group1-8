@@ -39,8 +39,6 @@ namespace Intex_group1_8
                      policy => policy.RequireRole("Administrator"));
             });
             // this is for the login and register DB
-            services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.Configure<CookiePolicyOptions>(options =>
             {
