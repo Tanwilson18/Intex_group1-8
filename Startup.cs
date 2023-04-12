@@ -30,19 +30,28 @@ namespace Intex_group1_8
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddIdentity<IdentityUser, IdentityRole>(
+                    options => {
+                        options.Stores.MaxLengthForKeys = 128;
+                    })
+                    .AddEntityFrameworkStores<ApplicationDbContext>()
+                    .AddRoles<IdentityRole>()
+                    .AddDefaultUI()
+                    .AddDefaultTokenProviders();
+
+
+
+
             services.AddControllersWithViews();
             services.AddRazorPages();
             services.AddHttpContextAccessor();
             services.AddMvc();
-
-            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                .AddEntityFrameworkStores<ApplicationDbContext>();
-            // role based authentication
+ 
 
             services.AddAuthorization(options =>
             {
                 options.AddPolicy("RequireAdministratorRole",
-                     policy => policy.RequireRole("Administrator"));
+                     policy => policy.RequireRole("Admin"));
             });
 
             // This is the default connection DB for the user login info
@@ -80,7 +89,7 @@ namespace Intex_group1_8
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public static void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
             {
@@ -100,6 +109,7 @@ namespace Intex_group1_8
             app.UseAuthentication();
             app.UseAuthorization();
 
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute("Paging", "Page{pageNum}", new { Controller = "Home", action = "Index", pageNum = 1 });
@@ -108,9 +118,26 @@ namespace Intex_group1_8
 
                 endpoints.MapRazorPages();
             });
+
+            using (var scope = app.ApplicationServices.CreateScope())
+            {
+                var services = scope.ServiceProvider;
+
+                var context = services.GetRequiredService<ApplicationDbContext>();
+
+                context.Database.Migrate();
+
+                var userMgr = services.GetRequiredService<UserManager<IdentityUser>>();
+                var roleMgr = services.GetRequiredService<RoleManager<IdentityRole>>();
+
+                IdentitySeedData.Initialize(context, userMgr, roleMgr).Wait();
+            }
+
+
+
+
         }
-
-
 
     }
 }
+ 
