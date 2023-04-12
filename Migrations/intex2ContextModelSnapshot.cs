@@ -3,8 +3,8 @@ using System;
 using Intex_group1_8.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace Intex_group1_8.Migrations
 {
@@ -15,12 +15,12 @@ namespace Intex_group1_8.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
+                .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn)
                 .HasAnnotation("ProductVersion", "3.1.32")
-                .HasAnnotation("Relational:MaxIdentifierLength", 128)
+                .HasAnnotation("Relational:MaxIdentifierLength", 63)
                 .HasAnnotation("Relational:Sequence:.excelimporter$template_nr_mxseq", "'excelimporter$template_nr_mxseq', '', '1', '1', '', '', 'Int64', 'False'")
                 .HasAnnotation("Relational:Sequence:.system$filedocument_fileid_mxseq", "'system$filedocument_fileid_mxseq', '', '1', '1', '', '', 'Int64', 'False'")
-                .HasAnnotation("Relational:Sequence:.system$queuedtask_sequence_mxseq", "'system$queuedtask_sequence_mxseq', '', '1', '1', '', '', 'Int64', 'False'")
-                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                .HasAnnotation("Relational:Sequence:.system$queuedtask_sequence_mxseq", "'system$queuedtask_sequence_mxseq', '', '1', '1', '', '', 'Int64', 'False'");
 
             modelBuilder.Entity("Intex_group1_8.Models.Analysis", b =>
                 {
@@ -30,19 +30,19 @@ namespace Intex_group1_8.Migrations
 
                     b.Property<int?>("Analysisid")
                         .HasColumnName("analysisid")
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
                     b.Property<int?>("Analysistype")
                         .HasColumnName("analysistype")
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
                     b.Property<DateTime?>("Date")
                         .HasColumnName("date")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<string>("Doneby")
                         .HasColumnName("doneby")
-                        .HasColumnType("nvarchar(100)")
+                        .HasColumnType("character varying(100)")
                         .HasMaxLength(100);
 
                     b.HasKey("Id");
@@ -77,21 +77,21 @@ namespace Intex_group1_8.Migrations
 
                     b.Property<string>("Coordinateset")
                         .HasColumnName("coordinateset")
-                        .HasColumnType("nvarchar(200)")
+                        .HasColumnType("character varying(200)")
                         .HasMaxLength(200);
 
                     b.Property<string>("Notes")
                         .HasColumnName("notes")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("text");
 
                     b.Property<string>("Photographed")
                         .HasColumnName("photographed")
-                        .HasColumnType("nvarchar(3)")
+                        .HasColumnType("character varying(3)")
                         .HasMaxLength(3);
 
                     b.Property<string>("Registernum")
                         .HasColumnName("registernum")
-                        .HasColumnType("nvarchar(30)")
+                        .HasColumnType("character varying(30)")
                         .HasMaxLength(30);
 
                     b.HasKey("Id");
@@ -126,76 +126,76 @@ namespace Intex_group1_8.Migrations
 
                     b.Property<string>("Currentlocation")
                         .HasColumnName("currentlocation")
-                        .HasColumnType("nvarchar(200)")
+                        .HasColumnType("character varying(200)")
                         .HasMaxLength(200);
 
                     b.Property<string>("Date")
                         .HasColumnName("date")
-                        .HasColumnType("nvarchar(200)")
+                        .HasColumnType("character varying(200)")
                         .HasMaxLength(200);
 
                     b.Property<string>("Description")
                         .HasColumnName("description")
-                        .HasColumnType("nvarchar(500)")
+                        .HasColumnType("character varying(500)")
                         .HasMaxLength(500);
 
                     b.Property<string>("Dimensions")
                         .HasColumnName("dimensions")
-                        .HasColumnType("nvarchar(200)")
+                        .HasColumnType("character varying(200)")
                         .HasMaxLength(200);
 
                     b.Property<DateTime?>("Entrydate")
                         .HasColumnName("entrydate")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<string>("Excavatornum")
                         .HasColumnName("excavatornum")
-                        .HasColumnType("nvarchar(200)")
+                        .HasColumnType("character varying(200)")
                         .HasMaxLength(200);
 
                     b.Property<string>("Finder")
                         .HasColumnName("finder")
-                        .HasColumnType("nvarchar(200)")
+                        .HasColumnType("character varying(200)")
                         .HasMaxLength(200);
 
                     b.Property<string>("Material")
                         .HasColumnName("material")
-                        .HasColumnType("nvarchar(200)")
+                        .HasColumnType("character varying(200)")
                         .HasMaxLength(200);
 
                     b.Property<string>("Number")
                         .HasColumnName("number")
-                        .HasColumnType("nvarchar(200)")
+                        .HasColumnType("character varying(200)")
                         .HasMaxLength(200);
 
                     b.Property<string>("Photos")
                         .HasColumnName("photos")
-                        .HasColumnType("nvarchar(3)")
+                        .HasColumnType("character varying(3)")
                         .HasMaxLength(3);
 
                     b.Property<string>("Position")
                         .HasColumnName("position")
-                        .HasColumnType("nvarchar(200)")
+                        .HasColumnType("character varying(200)")
                         .HasMaxLength(200);
 
                     b.Property<string>("Provenance")
                         .HasColumnName("provenance")
-                        .HasColumnType("nvarchar(200)")
+                        .HasColumnType("character varying(200)")
                         .HasMaxLength(200);
 
                     b.Property<string>("Qualityphotos")
                         .HasColumnName("qualityphotos")
-                        .HasColumnType("nvarchar(3)")
+                        .HasColumnType("character varying(3)")
                         .HasMaxLength(3);
 
                     b.Property<string>("Rehousedto")
                         .HasColumnName("rehousedto")
-                        .HasColumnType("nvarchar(200)")
+                        .HasColumnType("character varying(200)")
                         .HasMaxLength(200);
 
                     b.Property<string>("Remarks")
                         .HasColumnName("remarks")
-                        .HasColumnType("nvarchar(500)")
+                        .HasColumnType("character varying(500)")
                         .HasMaxLength(500);
 
                     b.HasKey("Id");
@@ -230,34 +230,34 @@ namespace Intex_group1_8.Migrations
 
                     b.Property<int?>("Bagnumber")
                         .HasColumnName("bagnumber")
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
                     b.Property<int?>("Clusternumber")
                         .HasColumnName("clusternumber")
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
                     b.Property<DateTime?>("Date")
                         .HasColumnName("date")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<string>("Initials")
                         .HasColumnName("initials")
-                        .HasColumnType("nvarchar(200)")
+                        .HasColumnType("character varying(200)")
                         .HasMaxLength(200);
 
                     b.Property<string>("Notes")
                         .HasColumnName("notes")
-                        .HasColumnType("nvarchar(2000)")
+                        .HasColumnType("character varying(2000)")
                         .HasMaxLength(2000);
 
                     b.Property<string>("Previouslysampled")
                         .HasColumnName("previouslysampled")
-                        .HasColumnType("nvarchar(200)")
+                        .HasColumnType("character varying(200)")
                         .HasMaxLength(200);
 
                     b.Property<int?>("Racknumber")
                         .HasColumnName("racknumber")
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
                     b.HasKey("Id");
 
@@ -291,129 +291,129 @@ namespace Intex_group1_8.Migrations
 
                     b.Property<string>("CariesPeriodontalDisease")
                         .HasColumnName("caries_periodontal_disease")
-                        .HasColumnType("nvarchar(200)")
+                        .HasColumnType("character varying(200)")
                         .HasMaxLength(200);
 
                     b.Property<int?>("Estimatestature")
                         .HasColumnName("estimatestature")
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
                     b.Property<string>("Femur")
                         .HasColumnName("femur")
-                        .HasColumnType("nvarchar(200)")
+                        .HasColumnType("character varying(200)")
                         .HasMaxLength(200);
 
                     b.Property<string>("Femurheaddiameter")
                         .HasColumnName("femurheaddiameter")
-                        .HasColumnType("nvarchar(200)")
+                        .HasColumnType("character varying(200)")
                         .HasMaxLength(200);
 
                     b.Property<int?>("Femurlength")
                         .HasColumnName("femurlength")
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
                     b.Property<string>("Gonion")
                         .HasColumnName("gonion")
-                        .HasColumnType("nvarchar(200)")
+                        .HasColumnType("character varying(200)")
                         .HasMaxLength(200);
 
                     b.Property<string>("Humerus")
                         .HasColumnName("humerus")
-                        .HasColumnType("nvarchar(200)")
+                        .HasColumnType("character varying(200)")
                         .HasMaxLength(200);
 
                     b.Property<string>("Humerusheaddiameter")
                         .HasColumnName("humerusheaddiameter")
-                        .HasColumnType("nvarchar(200)")
+                        .HasColumnType("character varying(200)")
                         .HasMaxLength(200);
 
                     b.Property<int?>("Humeruslength")
                         .HasColumnName("humeruslength")
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
                     b.Property<string>("Lambdoidsuture")
                         .HasColumnName("lambdoidsuture")
-                        .HasColumnType("nvarchar(200)")
+                        .HasColumnType("character varying(200)")
                         .HasMaxLength(200);
 
                     b.Property<string>("MedicalIpRamus")
                         .HasColumnName("medical_ip_ramus")
-                        .HasColumnType("nvarchar(200)")
+                        .HasColumnType("character varying(200)")
                         .HasMaxLength(200);
 
                     b.Property<string>("Notes")
                         .HasColumnName("notes")
-                        .HasColumnType("nvarchar(2000)")
+                        .HasColumnType("character varying(2000)")
                         .HasMaxLength(2000);
 
                     b.Property<string>("Nuchalcrest")
                         .HasColumnName("nuchalcrest")
-                        .HasColumnType("nvarchar(200)")
+                        .HasColumnType("character varying(200)")
                         .HasMaxLength(200);
 
                     b.Property<string>("Observations")
                         .HasColumnName("observations")
-                        .HasColumnType("nvarchar(2000)")
+                        .HasColumnType("character varying(2000)")
                         .HasMaxLength(2000);
 
                     b.Property<string>("Orbitedge")
                         .HasColumnName("orbitedge")
-                        .HasColumnType("nvarchar(200)")
+                        .HasColumnType("character varying(200)")
                         .HasMaxLength(200);
 
                     b.Property<string>("Osteophytosis")
                         .HasColumnName("osteophytosis")
-                        .HasColumnType("nvarchar(200)")
+                        .HasColumnType("character varying(200)")
                         .HasMaxLength(200);
 
                     b.Property<bool?>("Parietalblossing")
                         .HasColumnName("parietalblossing")
-                        .HasColumnType("bit");
+                        .HasColumnType("boolean");
 
                     b.Property<int?>("Perservationindex")
                         .HasColumnName("perservationindex")
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
                     b.Property<bool?>("Robust")
                         .HasColumnName("robust")
-                        .HasColumnType("bit");
+                        .HasColumnType("boolean");
 
                     b.Property<string>("Sciaticnotch")
                         .HasColumnName("sciaticnotch")
-                        .HasColumnType("nvarchar(200)")
+                        .HasColumnType("character varying(200)")
                         .HasMaxLength(200);
 
                     b.Property<string>("Sphenooccipitalsynchondrosis")
                         .HasColumnName("sphenooccipitalsynchondrosis")
-                        .HasColumnType("nvarchar(200)")
+                        .HasColumnType("character varying(200)")
                         .HasMaxLength(200);
 
                     b.Property<string>("Squamossuture")
                         .HasColumnName("squamossuture")
-                        .HasColumnType("nvarchar(200)")
+                        .HasColumnType("character varying(200)")
                         .HasMaxLength(200);
 
                     b.Property<string>("Subpubicangle")
                         .HasColumnName("subpubicangle")
-                        .HasColumnType("nvarchar(200)")
+                        .HasColumnType("character varying(200)")
                         .HasMaxLength(200);
 
                     b.Property<string>("Supraorbitalridges")
                         .HasColumnName("supraorbitalridges")
-                        .HasColumnType("nvarchar(200)")
+                        .HasColumnType("character varying(200)")
                         .HasMaxLength(200);
 
                     b.Property<int?>("Toothattrition")
                         .HasColumnName("toothattrition")
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
                     b.Property<int?>("Tootheruptionageestimation")
                         .HasColumnName("tootheruptionageestimation")
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
                     b.Property<bool?>("Ventralarc")
                         .HasColumnName("ventralarc")
-                        .HasColumnType("bit");
+                        .HasColumnType("boolean");
 
                     b.HasKey("Id");
 
@@ -428,22 +428,22 @@ namespace Intex_group1_8.Migrations
 
                     b.Property<string>("Author")
                         .HasColumnName("author")
-                        .HasColumnType("nvarchar(200)")
+                        .HasColumnType("character varying(200)")
                         .HasMaxLength(200);
 
                     b.Property<string>("Description")
                         .HasColumnName("description")
-                        .HasColumnType("nvarchar(2000)")
+                        .HasColumnType("character varying(2000)")
                         .HasMaxLength(2000);
 
                     b.Property<string>("Link")
                         .HasColumnName("link")
-                        .HasColumnType("nvarchar(300)")
+                        .HasColumnType("character varying(300)")
                         .HasMaxLength(300);
 
                     b.Property<string>("Title")
                         .HasColumnName("title")
-                        .HasColumnType("nvarchar(200)")
+                        .HasColumnType("character varying(200)")
                         .HasMaxLength(200);
 
                     b.HasKey("Id");
@@ -459,17 +459,17 @@ namespace Intex_group1_8.Migrations
 
                     b.Property<string>("Adultsubadult")
                         .HasColumnName("adultsubadult")
-                        .HasColumnType("nvarchar(200)")
+                        .HasColumnType("character varying(200)")
                         .HasMaxLength(200);
 
                     b.Property<string>("Ageatdeath")
                         .HasColumnName("ageatdeath")
-                        .HasColumnType("nvarchar(200)")
+                        .HasColumnType("character varying(200)")
                         .HasMaxLength(200);
 
                     b.Property<string>("Area")
                         .HasColumnName("area")
-                        .HasColumnType("nvarchar(200)")
+                        .HasColumnType("character varying(200)")
                         .HasMaxLength(200);
 
                     b.Property<long?>("Burialid")
@@ -478,151 +478,151 @@ namespace Intex_group1_8.Migrations
 
                     b.Property<string>("Burialmaterials")
                         .HasColumnName("burialmaterials")
-                        .HasColumnType("nvarchar(5)")
+                        .HasColumnType("character varying(5)")
                         .HasMaxLength(5);
 
                     b.Property<string>("Burialnumber")
                         .HasColumnName("burialnumber")
-                        .HasColumnType("nvarchar(200)")
+                        .HasColumnType("character varying(200)")
                         .HasMaxLength(200);
 
                     b.Property<string>("Clusternumber")
                         .HasColumnName("clusternumber")
-                        .HasColumnType("nvarchar(200)")
+                        .HasColumnType("character varying(200)")
                         .HasMaxLength(200);
 
                     b.Property<string>("Dataexpertinitials")
                         .HasColumnName("dataexpertinitials")
-                        .HasColumnType("nvarchar(200)")
+                        .HasColumnType("character varying(200)")
                         .HasMaxLength(200);
 
                     b.Property<DateTime?>("Dateofexcavation")
                         .HasColumnName("dateofexcavation")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<string>("Depth")
                         .HasColumnName("depth")
-                        .HasColumnType("nvarchar(200)")
+                        .HasColumnType("character varying(200)")
                         .HasMaxLength(200);
 
                     b.Property<string>("Eastwest")
                         .HasColumnName("eastwest")
-                        .HasColumnType("nvarchar(200)")
+                        .HasColumnType("character varying(200)")
                         .HasMaxLength(200);
 
                     b.Property<string>("Excavationrecorder")
                         .HasColumnName("excavationrecorder")
-                        .HasColumnType("nvarchar(100)")
+                        .HasColumnType("character varying(100)")
                         .HasMaxLength(100);
 
                     b.Property<string>("Facebundles")
                         .HasColumnName("facebundles")
-                        .HasColumnType("nvarchar(200)")
+                        .HasColumnType("character varying(200)")
                         .HasMaxLength(200);
 
                     b.Property<string>("Fieldbookexcavationyear")
                         .HasColumnName("fieldbookexcavationyear")
-                        .HasColumnType("nvarchar(200)")
+                        .HasColumnType("character varying(200)")
                         .HasMaxLength(200);
 
                     b.Property<string>("Fieldbookpage")
                         .HasColumnName("fieldbookpage")
-                        .HasColumnType("nvarchar(200)")
+                        .HasColumnType("character varying(200)")
                         .HasMaxLength(200);
 
                     b.Property<string>("Goods")
                         .HasColumnName("goods")
-                        .HasColumnType("nvarchar(200)")
+                        .HasColumnType("character varying(200)")
                         .HasMaxLength(200);
 
                     b.Property<string>("Hair")
                         .HasColumnName("hair")
-                        .HasColumnType("nvarchar(5)")
+                        .HasColumnType("character varying(5)")
                         .HasMaxLength(5);
 
                     b.Property<string>("Haircolor")
                         .HasColumnName("haircolor")
-                        .HasColumnType("nvarchar(200)")
+                        .HasColumnType("character varying(200)")
                         .HasMaxLength(200);
 
                     b.Property<string>("Headdirection")
                         .HasColumnName("headdirection")
-                        .HasColumnType("nvarchar(200)")
+                        .HasColumnType("character varying(200)")
                         .HasMaxLength(200);
 
                     b.Property<string>("Length")
                         .HasColumnName("length")
-                        .HasColumnType("nvarchar(200)")
+                        .HasColumnType("character varying(200)")
                         .HasMaxLength(200);
 
                     b.Property<string>("Northsouth")
                         .HasColumnName("northsouth")
-                        .HasColumnType("nvarchar(200)")
+                        .HasColumnType("character varying(200)")
                         .HasMaxLength(200);
 
                     b.Property<string>("Photos")
                         .HasColumnName("photos")
-                        .HasColumnType("nvarchar(5)")
+                        .HasColumnType("character varying(5)")
                         .HasMaxLength(5);
 
                     b.Property<string>("Preservation")
                         .HasColumnName("preservation")
-                        .HasColumnType("nvarchar(200)")
+                        .HasColumnType("character varying(200)")
                         .HasMaxLength(200);
 
                     b.Property<string>("Samplescollected")
                         .HasColumnName("samplescollected")
-                        .HasColumnType("nvarchar(200)")
+                        .HasColumnType("character varying(200)")
                         .HasMaxLength(200);
 
                     b.Property<string>("Sex")
                         .HasColumnName("sex")
-                        .HasColumnType("nvarchar(200)")
+                        .HasColumnType("character varying(200)")
                         .HasMaxLength(200);
 
                     b.Property<string>("Shaftnumber")
                         .HasColumnName("shaftnumber")
-                        .HasColumnType("nvarchar(200)")
+                        .HasColumnType("character varying(200)")
                         .HasMaxLength(200);
 
                     b.Property<string>("Southtofeet")
                         .HasColumnName("southtofeet")
-                        .HasColumnType("nvarchar(200)")
+                        .HasColumnType("character varying(200)")
                         .HasMaxLength(200);
 
                     b.Property<string>("Southtohead")
                         .HasColumnName("southtohead")
-                        .HasColumnType("nvarchar(200)")
+                        .HasColumnType("character varying(200)")
                         .HasMaxLength(200);
 
                     b.Property<string>("Squareeastwest")
                         .HasColumnName("squareeastwest")
-                        .HasColumnType("nvarchar(200)")
+                        .HasColumnType("character varying(200)")
                         .HasMaxLength(200);
 
                     b.Property<string>("Squarenorthsouth")
                         .HasColumnName("squarenorthsouth")
-                        .HasColumnType("nvarchar(200)")
+                        .HasColumnType("character varying(200)")
                         .HasMaxLength(200);
 
                     b.Property<string>("Text")
                         .HasColumnName("text")
-                        .HasColumnType("nvarchar(2000)")
+                        .HasColumnType("character varying(2000)")
                         .HasMaxLength(2000);
 
                     b.Property<string>("Westtofeet")
                         .HasColumnName("westtofeet")
-                        .HasColumnType("nvarchar(200)")
+                        .HasColumnType("character varying(200)")
                         .HasMaxLength(200);
 
                     b.Property<string>("Westtohead")
                         .HasColumnName("westtohead")
-                        .HasColumnType("nvarchar(200)")
+                        .HasColumnType("character varying(200)")
                         .HasMaxLength(200);
 
                     b.Property<string>("Wrapping")
                         .HasColumnName("wrapping")
-                        .HasColumnType("nvarchar(200)")
+                        .HasColumnType("character varying(200)")
                         .HasMaxLength(200);
 
                     b.HasKey("Id");
@@ -714,69 +714,69 @@ namespace Intex_group1_8.Migrations
 
                     b.Property<int?>("Agebp")
                         .HasColumnName("agebp")
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
                     b.Property<string>("C14lab")
                         .HasColumnName("c14lab")
-                        .HasColumnType("nvarchar(200)")
+                        .HasColumnType("character varying(200)")
                         .HasMaxLength(200);
 
                     b.Property<int?>("Calendardate")
                         .HasColumnName("calendardate")
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
                     b.Property<int?>("Calibrateddateavg")
                         .HasColumnName("calibrateddateavg")
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
                     b.Property<int?>("Calibrateddatemax")
                         .HasColumnName("calibrateddatemax")
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
                     b.Property<int?>("Calibrateddatemin")
                         .HasColumnName("calibrateddatemin")
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
                     b.Property<int?>("Calibratedspan")
                         .HasColumnName("calibratedspan")
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
                     b.Property<string>("Category")
                         .HasColumnName("category")
-                        .HasColumnType("nvarchar(200)")
+                        .HasColumnType("character varying(200)")
                         .HasMaxLength(200);
 
                     b.Property<string>("Description")
                         .HasColumnName("description")
-                        .HasColumnType("nvarchar(2000)")
+                        .HasColumnType("character varying(2000)")
                         .HasMaxLength(2000);
 
                     b.Property<string>("Foci")
                         .HasColumnName("foci")
-                        .HasColumnType("nvarchar(200)")
+                        .HasColumnType("character varying(200)")
                         .HasMaxLength(200);
 
                     b.Property<string>("Location")
                         .HasColumnName("location")
-                        .HasColumnType("nvarchar(2000)")
+                        .HasColumnType("character varying(2000)")
                         .HasMaxLength(2000);
 
                     b.Property<string>("Questions")
                         .HasColumnName("questions")
-                        .HasColumnType("nvarchar(2000)")
+                        .HasColumnType("character varying(2000)")
                         .HasMaxLength(2000);
 
                     b.Property<int?>("Rack")
                         .HasColumnName("rack")
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
                     b.Property<int?>("Size")
                         .HasColumnName("size")
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
                     b.Property<int?>("Tubenumber")
                         .HasColumnName("tubenumber")
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
                     b.HasKey("Id");
 
@@ -791,11 +791,11 @@ namespace Intex_group1_8.Migrations
 
                     b.Property<int?>("Colorid")
                         .HasColumnName("colorid")
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
                     b.Property<string>("Value")
                         .HasColumnName("value")
-                        .HasColumnType("nvarchar(500)")
+                        .HasColumnType("character varying(500)")
                         .HasMaxLength(500);
 
                     b.HasKey("Id");
@@ -901,11 +901,11 @@ namespace Intex_group1_8.Migrations
 
                     b.Property<int?>("Decorationid")
                         .HasColumnName("decorationid")
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
                     b.Property<string>("Value")
                         .HasColumnName("value")
-                        .HasColumnType("nvarchar(500)")
+                        .HasColumnType("character varying(500)")
                         .HasMaxLength(500);
 
                     b.HasKey("Id");
@@ -940,16 +940,16 @@ namespace Intex_group1_8.Migrations
 
                     b.Property<int?>("Dimensionid")
                         .HasColumnName("dimensionid")
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
                     b.Property<string>("Dimensiontype")
                         .HasColumnName("dimensiontype")
-                        .HasColumnType("nvarchar(500)")
+                        .HasColumnType("character varying(500)")
                         .HasMaxLength(500);
 
                     b.Property<string>("Value")
                         .HasColumnName("value")
-                        .HasColumnType("nvarchar(200)")
+                        .HasColumnType("character varying(200)")
                         .HasMaxLength(200);
 
                     b.HasKey("Id");
@@ -984,27 +984,27 @@ namespace Intex_group1_8.Migrations
 
                     b.Property<string>("Author")
                         .HasColumnName("author")
-                        .HasColumnType("nvarchar(200)")
+                        .HasColumnType("character varying(200)")
                         .HasMaxLength(200);
 
                     b.Property<string>("Description")
                         .HasColumnName("description")
-                        .HasColumnType("nvarchar(2000)")
+                        .HasColumnType("character varying(2000)")
                         .HasMaxLength(2000);
 
                     b.Property<string>("Title")
                         .HasColumnName("title")
-                        .HasColumnType("nvarchar(200)")
+                        .HasColumnType("character varying(200)")
                         .HasMaxLength(200);
 
                     b.Property<string>("Url")
                         .HasColumnName("url")
-                        .HasColumnType("nvarchar(200)")
+                        .HasColumnType("character varying(200)")
                         .HasMaxLength(200);
 
                     b.Property<string>("Urltoimage")
                         .HasColumnName("urltoimage")
-                        .HasColumnType("nvarchar(2000)")
+                        .HasColumnType("character varying(2000)")
                         .HasMaxLength(2000);
 
                     b.HasKey("Id");
@@ -1020,25 +1020,25 @@ namespace Intex_group1_8.Migrations
 
                     b.Property<DateTime?>("Date")
                         .HasColumnName("date")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<string>("Description")
                         .HasColumnName("description")
-                        .HasColumnType("nvarchar(500)")
+                        .HasColumnType("character varying(500)")
                         .HasMaxLength(500);
 
                     b.Property<string>("Filename")
                         .HasColumnName("filename")
-                        .HasColumnType("nvarchar(200)")
+                        .HasColumnType("character varying(200)")
                         .HasMaxLength(200);
 
                     b.Property<int?>("Photodataid")
                         .HasColumnName("photodataid")
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
                     b.Property<string>("Url")
                         .HasColumnName("url")
-                        .HasColumnType("nvarchar(500)")
+                        .HasColumnType("character varying(500)")
                         .HasMaxLength(500);
 
                     b.HasKey("Id");
@@ -1073,51 +1073,51 @@ namespace Intex_group1_8.Migrations
 
                     b.Property<string>("Area")
                         .HasColumnName("area")
-                        .HasColumnType("nvarchar(100)")
+                        .HasColumnType("character varying(100)")
                         .HasMaxLength(100);
 
                     b.Property<string>("Burialnumber")
                         .HasColumnName("burialnumber")
-                        .HasColumnType("nvarchar(10)")
+                        .HasColumnType("character varying(10)")
                         .HasMaxLength(10);
 
                     b.Property<string>("Eastwest")
                         .HasColumnName("eastwest")
-                        .HasColumnType("nvarchar(1)")
+                        .HasColumnType("character varying(1)")
                         .HasMaxLength(1);
 
                     b.Property<string>("Filename")
                         .HasColumnName("filename")
-                        .HasColumnType("nvarchar(200)")
+                        .HasColumnType("character varying(200)")
                         .HasMaxLength(200);
 
                     b.Property<string>("Northsouth")
                         .HasColumnName("northsouth")
-                        .HasColumnType("nvarchar(1)")
+                        .HasColumnType("character varying(1)")
                         .HasMaxLength(1);
 
                     b.Property<DateTime?>("Photodate")
                         .HasColumnName("photodate")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<string>("Photographer")
                         .HasColumnName("photographer")
-                        .HasColumnType("nvarchar(100)")
+                        .HasColumnType("character varying(100)")
                         .HasMaxLength(100);
 
                     b.Property<string>("Squareeastwest")
                         .HasColumnName("squareeastwest")
-                        .HasColumnType("nvarchar(100)")
+                        .HasColumnType("character varying(100)")
                         .HasMaxLength(100);
 
                     b.Property<string>("Squarenorthsouth")
                         .HasColumnName("squarenorthsouth")
-                        .HasColumnType("nvarchar(5)")
+                        .HasColumnType("character varying(5)")
                         .HasMaxLength(5);
 
                     b.Property<string>("Tableassociation")
                         .HasColumnName("tableassociation")
-                        .HasColumnType("nvarchar(10)")
+                        .HasColumnType("character varying(10)")
                         .HasMaxLength(10);
 
                     b.HasKey("Id");
@@ -1133,11 +1133,11 @@ namespace Intex_group1_8.Migrations
 
                     b.Property<int?>("Structureid")
                         .HasColumnName("structureid")
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
                     b.Property<string>("Value")
                         .HasColumnName("value")
-                        .HasColumnType("nvarchar(500)")
+                        .HasColumnType("character varying(500)")
                         .HasMaxLength(500);
 
                     b.HasKey("Id");
@@ -1172,12 +1172,12 @@ namespace Intex_group1_8.Migrations
 
                     b.Property<string>("Bio")
                         .HasColumnName("bio")
-                        .HasColumnType("nvarchar(200)")
+                        .HasColumnType("character varying(200)")
                         .HasMaxLength(200);
 
                     b.Property<string>("Membername")
                         .HasColumnName("membername")
-                        .HasColumnType("nvarchar(200)")
+                        .HasColumnType("character varying(200)")
                         .HasMaxLength(200);
 
                     b.HasKey("Id");
@@ -1193,40 +1193,40 @@ namespace Intex_group1_8.Migrations
 
                     b.Property<string>("Burialnumber")
                         .HasColumnName("burialnumber")
-                        .HasColumnType("nvarchar(200)")
+                        .HasColumnType("character varying(200)")
                         .HasMaxLength(200);
 
                     b.Property<string>("Description")
                         .HasColumnName("description")
-                        .HasColumnType("nvarchar(2000)")
+                        .HasColumnType("character varying(2000)")
                         .HasMaxLength(2000);
 
                     b.Property<string>("Direction")
                         .HasColumnName("direction")
-                        .HasColumnType("nvarchar(200)")
+                        .HasColumnType("character varying(200)")
                         .HasMaxLength(200);
 
                     b.Property<string>("Estimatedperiod")
                         .HasColumnName("estimatedperiod")
-                        .HasColumnType("nvarchar(200)")
+                        .HasColumnType("character varying(200)")
                         .HasMaxLength(200);
 
                     b.Property<string>("Locale")
                         .HasColumnName("locale")
-                        .HasColumnType("nvarchar(200)")
+                        .HasColumnType("character varying(200)")
                         .HasMaxLength(200);
 
                     b.Property<DateTime?>("Photographeddate")
                         .HasColumnName("photographeddate")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<DateTime?>("Sampledate")
                         .HasColumnName("sampledate")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<int?>("Textileid")
                         .HasColumnName("textileid")
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
                     b.HasKey("Id");
 
@@ -1241,11 +1241,11 @@ namespace Intex_group1_8.Migrations
 
                     b.Property<int?>("Textilefunctionid")
                         .HasColumnName("textilefunctionid")
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
                     b.Property<string>("Value")
                         .HasColumnName("value")
-                        .HasColumnType("nvarchar(200)")
+                        .HasColumnType("character varying(200)")
                         .HasMaxLength(200);
 
                     b.HasKey("Id");
@@ -1280,47 +1280,47 @@ namespace Intex_group1_8.Migrations
 
                     b.Property<string>("Angle")
                         .HasColumnName("angle")
-                        .HasColumnType("nvarchar(20)")
+                        .HasColumnType("character varying(20)")
                         .HasMaxLength(20);
 
                     b.Property<string>("Component")
                         .HasColumnName("component")
-                        .HasColumnType("nvarchar(200)")
+                        .HasColumnType("character varying(200)")
                         .HasMaxLength(200);
 
                     b.Property<string>("Count")
                         .HasColumnName("count")
-                        .HasColumnType("nvarchar(100)")
+                        .HasColumnType("character varying(100)")
                         .HasMaxLength(100);
 
                     b.Property<string>("Direction")
                         .HasColumnName("direction")
-                        .HasColumnType("nvarchar(20)")
+                        .HasColumnType("character varying(20)")
                         .HasMaxLength(20);
 
                     b.Property<string>("Manipulation")
                         .HasColumnName("manipulation")
-                        .HasColumnType("nvarchar(100)")
+                        .HasColumnType("character varying(100)")
                         .HasMaxLength(100);
 
                     b.Property<string>("Material")
                         .HasColumnName("material")
-                        .HasColumnType("nvarchar(100)")
+                        .HasColumnType("character varying(100)")
                         .HasMaxLength(100);
 
                     b.Property<string>("Ply")
                         .HasColumnName("ply")
-                        .HasColumnType("nvarchar(20)")
+                        .HasColumnType("character varying(20)")
                         .HasMaxLength(20);
 
                     b.Property<string>("Thickness")
                         .HasColumnName("thickness")
-                        .HasColumnType("nvarchar(20)")
+                        .HasColumnType("character varying(20)")
                         .HasMaxLength(20);
 
                     b.Property<int?>("Yarnmanipulationid")
                         .HasColumnName("yarnmanipulationid")
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
                     b.HasKey("Id");
 
