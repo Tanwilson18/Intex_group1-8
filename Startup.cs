@@ -45,9 +45,9 @@ namespace Intex_group1_8
                      policy => policy.RequireRole("Administrator"));
             });
 
-            // This is the default connection DB
+            // This is the default connection DB for the user login info
             services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+                options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));
 
             //This is for the postgres mummmmmmmyyyyyy DB
             services.AddDbContext<intex2Context>(options =>
