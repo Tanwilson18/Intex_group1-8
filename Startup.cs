@@ -102,9 +102,10 @@ namespace Intex_group1_8
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapControllerRoute("Paging", "Page{pageNum}", new { Controller = "Home", action = "Index", pageNum = 1 });
+
+                endpoints.MapDefaultControllerRoute();
+
                 endpoints.MapRazorPages();
             });
         }

@@ -13,6 +13,8 @@
   <ItemGroup>
     <None Remove="Views\Home\NewFile.txt" />
     <None Remove="Models\ViewModels\" />
+    <None Remove="Infrastructure\" />
+    <None Remove="Pages\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -39,6 +41,9 @@
     <Folder Include="Data\Migrations\" />
     <Folder Include="Migrations\" />
     <Folder Include="wwwroot\img\" />
+    <Folder Include="Models\ViewModels\" />
+    <Folder Include="Infrastructure\" />
+    <Folder Include="Pages\" />
   </ItemGroup>
 
 </Project>
