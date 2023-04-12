@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -29,17 +30,26 @@ namespace Intex_group1_8
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews();
             services.AddRazorPages();
             services.AddHttpContextAccessor();
             services.AddMvc();
-            services.AddControllersWithViews();
 
+            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+                .AddEntityFrameworkStores<ApplicationDbContext>();
+            // role based authentication
+
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("RequireAdministratorRole",
+                     policy => policy.RequireRole("Administrator"));
+            });
+
+            // This is the default connection DB
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
+            //This is for the postgres mummmmmmmyyyyyy DB
             services.AddDbContext<intex2Context>(options =>
                 options.UseNpgsql(Configuration.GetConnectionString("MummyDbConnection")));
 
@@ -57,12 +67,12 @@ namespace Intex_group1_8
 
             services.Configure<IdentityOptions>(options =>
             {
-                // Default Password settings.
-                options.Password.RequireDigit = true;
-                options.Password.RequireLowercase = true;
-                options.Password.RequireNonAlphanumeric = true;
-                options.Password.RequireUppercase = true;
-                options.Password.RequiredLength = 20;
+                // Default Password settings. CHANGE THIS
+                options.Password.RequireDigit = false;
+                options.Password.RequireLowercase = false;
+                options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequireUppercase = false;
+                options.Password.RequiredLength = 1;
                 options.Password.RequiredUniqueChars = 1;
             });
 
@@ -98,5 +108,8 @@ namespace Intex_group1_8
                 endpoints.MapRazorPages();
             });
         }
+
+
+
     }
 }
