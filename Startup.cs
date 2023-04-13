@@ -39,9 +39,6 @@ namespace Intex_group1_8
                     .AddDefaultUI()
                     .AddDefaultTokenProviders();
 
-
-
-
             services.AddControllersWithViews();
             services.AddRazorPages();
             services.AddHttpContextAccessor();
@@ -84,7 +81,6 @@ namespace Intex_group1_8
                 options.Password.RequiredLength = 1;
                 options.Password.RequiredUniqueChars = 1;
             });
-
 
         }
 
@@ -132,12 +128,7 @@ namespace Intex_group1_8
 
                 IdentitySeedData.Initialize(context, userMgr, roleMgr).Wait();
             }
-
-
-
-
         }
-
     }
 }
  
