@@ -47,12 +47,9 @@
     <Folder Include="Migrations\" />
     <Folder Include="wwwroot\img\" />
     <Folder Include="Models\ViewModels\" />
-<<<<<<< HEAD
     <Folder Include="Infrastructure\" />
-=======
     <Folder Include="Models\Infrastructure\" />
     <Folder Include="Pages\" />
->>>>>>> 9dd756be76eaa3aadc70103f98fd6438f8ac5fca
   </ItemGroup>
 
   <ItemGroup>
