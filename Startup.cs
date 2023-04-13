@@ -11,6 +11,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.ML.OnnxRuntime;
+using Microsoft.OpenApi.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -40,6 +42,15 @@ namespace Intex_group1_8
                     .AddDefaultTokenProviders();
 
             services.AddControllersWithViews();
+            services.AddSwaggerGen();
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "My API", Version = "v1" });
+            });
+
+            services.AddSingleton<InferenceSession>(
+                  new InferenceSession("decision_tree_cleaned.onnx")
+                );
             services.AddRazorPages();
             services.AddHttpContextAccessor();
             services.AddMvc();
@@ -91,6 +102,11 @@ namespace Intex_group1_8
             {
                 app.UseDeveloperExceptionPage();
                 app.UseDatabaseErrorPage();
+                app.UseSwagger();
+                app.UseSwaggerUI(c =>
+                {
+                    c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+                });
             }
             else
             {
