@@ -65,7 +65,7 @@ namespace Intex_group1_8.Controllers
 
                 // -- Changing Filtering --
                 Burialmains = repo.Burialmains
-                .OrderBy(b => b.Id)
+                .OrderByDescending(b => b.Id)
                 .Skip((pageNum - 1) * pageSize)
                 .Take(pageSize),
 
@@ -104,10 +104,10 @@ namespace Intex_group1_8.Controllers
         }
 
         // Burial Details
-        [HttpPost]
+        [HttpGet]
         public IActionResult BurialDetails(long Id)
         {
-            Burialmain bm = repo.Burialmains.Where(b => b.Id == Id).First();
+            Burialmain bm = repo.Burialmains.Single(b => b.Id == Id);
 
             return View(bm);
         }

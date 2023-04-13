@@ -6,11 +6,10 @@
 
 <div class="container">
     <form method="post" asp-controller="Home" asp-action="AddBurialRecord">
-        <input class="d-block" asp-for="Id" type="hidden" /><br />
+        @*<input class="d-block" asp-for="Id" type="hidden" /><br />*@
 
-
-        <label class="inline-block" asp-for="Sex">Sex:</label>
-        <input  class="d-inline"asp-for="Sex" /><br />
+        <label asp-for="Sex">Sex:</label>
+        <input asp-for="Sex" /><br />
 
         <label asp-for="Ageatdeath">Age At Death:</label>
         <input asp-for="Ageatdeath" /><br />

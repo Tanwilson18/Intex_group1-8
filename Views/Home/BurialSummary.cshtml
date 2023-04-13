@@ -36,7 +36,7 @@
                 <td>@b.Text</td>
 
                 <td class="text-center text-align-center">
-                    <form method="post" asp-action="BurialDetails" asp-controller="Home">
+                    <form method="get" asp-action="BurialDetails" asp-controller="Home">
                         <input name="Id" type="hidden" value=@b.Id id="Id">
                         <button class="btn btn-dark justify-content-center" type="submit">Burial Details</button>
                     </form>
