@@ -5,3 +5,550 @@
 <div class="text-center">
     <h1 class="display-4">Supervised</h1>
 </div>
+
+<h2>Welcome to the Supervised Model! Input your data here!</h2>
+
+<div id="resultDiv"></div>
+
+<div>
+    <form method="post" id="form">
+        <label for="squarenorthsouth">Square North-South:</label>
+        <input type="number" id="squarenorthsouth" name="squarenorthsouth"><br>
+
+        <label for="depth">Depth:</label>
+        <input type="number" id="depth" name="depth"><br>
+
+        <label for="southtohead">South to Head:</label>
+        <input type="number" id="southtohead" name="southtohead"><br>
+
+        <label for="squareeastwest">Square East-West:</label>
+        <input type="number" id="squareeastwest" name="squareeastwest"><br>
+
+        <label for="westtohead">West to Head:</label>
+        <input type="number" id="westtohead" name="westtohead"><br>
+
+        <label for="length">Length:</label>
+        <input type="number" id="length" name="length"><br>
+
+        <label for="burialnumber">Burial Number:</label>
+        <input type="number" id="burialnumber" name="burialnumber"><br>
+
+        <label for="westtofeet">West to Feet:</label>
+        <input type="number" id="westtofeet" name="westtofeet"><br>
+
+        <label for="southtofeet">South to Feet:</label>
+        <input type="number" id="southtofeet" name="southtofeet"><br>
+
+        <label for="fieldbookexcavationyear">Field Book Excavation Year:</label>
+        <input type="number" id="fieldbookexcavationyear" name="fieldbookexcavationyear"><br>
+
+        <label for="count">Count:</label>
+        <input type="number" id="count" name="count"><br>
+
+        <label for="headdirection_E">Head Direction E:</label>
+        <input type="number" id="headdirection_E" name="headdirection_E"><br>
+
+        <label for="headdirection_W">Head Direction W:</label>
+        <input type="number" id="headdirection_W" name="headdirection_W"><br>
+
+        <label for="northsouth_N">North-South N:</label>
+        <input type="number" id="northsouth_N" name="northsouth_N"><br>
+
+        <label for="eastwest_E">East-West E:</label>
+        <input type="number" id="eastwest_E" name="eastwest_E"><br>
+
+        <label for="eastwest_W">East-West W:</label>
+        <input type="number" id="eastwest_W" name="eastwest_W"><br>
+<!-------------------------------------------------------->
+        <label for="adultsubadult_Adult">Adult Subadult Adult:</label>
+        <input type="number" id="adultsubadult_Adult" name="adultsubadult_Adult"><br>
+
+        <label for="adultsubadult_Non_Adult">Adult Subadult Non-Adult:</label>
+        <input type="number" id="adultsubadult_Non_Adult" name="adultsubadult_Non_Adult"><br>
+
+        <label for="preservation_Badly_deteriorated">preservation_Badly_deteriorated:</label>
+        <input type="number" id="preservation_Badly_deteriorated" name="preservation_Badly_deteriorated"><br>
+
+        <label for="preservation_Body_only">preservation_Body_only:</label>
+        <input type="number" id="preservation_Body_only" name="preservation_Body_only"><br>
+
+        <label for="preservation_SKELETON">preservation_SKELETON:</label>
+        <input type="number" id="preservation_SKELETON" name="preservation_SKELETON"><br>
+
+        <label for="preservation_Skull_only">preservation_Skull_only:</label>
+        <input type="number" id="preservation_Skull_only" name="preservation_Skull_only"><br>
+
+        <label for="preservation_badly_disturbed">preservation_badly_disturbed:</label>
+        <input type="number" id="preservation_badly_disturbed" name="preservation_badly_disturbed"><br>
+
+        <label for="preservation_badly_preserved">preservation_badly_preserved:</label>
+        <input type="number" id="preservation_badly_preserved" name="preservation_badly_preserved"><br>
+
+        <label for="preservation_bones">preservation_bones:</label>
+        <input type="number" id="preservation_bones" name="preservation_bones"><br>
+
+        <label for="preservation_bones_and_skull">preservation_bones_and_skull:</label>
+        <input type="number" id="preservation_bones_and_skull" name="preservation_bones_and_skull"><br>
+
+        <label for="preservation_disarticulated">preservation_disarticulated:</label>
+        <input type="number" id="preservation_disarticulated" name="preservation_disarticulated"><br>
+
+        <label for="preservation_fair">preservation_fair:</label>
+        <input type="number" id="preservation_fair" name="preservation_fair"><br>
+
+        <label for="preservation_good">preservation_good:</label>
+        <input type="number" id="preservation_good" name="preservation_good"><br>
+
+        <label for="preservation_headless_skeleton">preservation_headless_skeleton:</label>
+        <input type="number" id="preservation_headless_skeleton" name="preservation_headless_skeleton"><br>
+
+        <label for="preservation_infested_with_bugs">preservation_infested_with_bugs:</label>
+        <input type="number" id="preservation_infested_with_bugs" name="preservation_infested_with_bugs"><br>
+
+        <label for="preservation_poor">preservation_poor:</label>
+        <input type="number" id="preservation_poor" name="preservation_poor"><br>
+
+        <label for="preservation_poorly_preserved">preservation_poorly_preserved:</label>
+        <input type="number" id="preservation_poorly_preserved" name="preservation_poorly_preserved"><br>
+
+        <label for="preservation_scattered_bones">preservation_scattered_bones:</label>
+        <input type="number" id="preservation_scattered_bones" name="preservation_scattered_bones"><br>
+
+        <label for="preservation_scattered_bones_with_skull">preservation_scattered_bones_with_skull:</label>
+        <input type="number" id="preservation_scattered_bones_with_skull" name="preservation_scattered_bones_with_skull"><br>
+
+        <label for="preservation_skeletalized">preservation_skeletalized:</label>
+        <input type="number" id="preservation_skeletalized" name="preservation_skeletalized"><br>
+
+        <label for="preservation_very_disturbed">preservation_very_disturbed:</label>
+        <input type="number" id="preservation_very_disturbed" name="preservation_very_disturbed"><br>
+
+        <label for="preservation_well_wrapped">preservation_well_wrapped:</label>
+        <input type="number" id="preservation_well_wrapped" name="preservation_well_wrapped"><br>
+
+        <label for="preservation_wrapped">preservation_wrapped:</label>
+        <input type="number" id="preservation_wrapped" name="preservation_wrapped"><br>
+
+        <label for="preservation_wrapped_bones_showing">preservation_wrapped_bones_showing:</label>
+        <input type="number" id="preservation_wrapped_bones_showing" name="preservation_wrapped_bones_showing"><br>
+
+        <label for="preservation_wrapped_head_showing">preservation_wrapped_head_showing:</label>
+        <input type="number" id="preservation_wrapped_head_showing" name="preservation_wrapped_head_showing"><br>
+        <!------------------------------------------------------------------------------------------------------------->
+        <label for="goods_N">goods_N:</label>
+        <input type="number" id="goods_N" name="goods_N"><br>
+
+        <label for="goods_Y">goods_Y:</label>
+        <input type="number" id="goods_Y" name="goods_Y"><br>
+
+        <label for="haircolor_Black">haircolor_Black:</label>
+        <input type="number" id="haircolor_Black" name="haircolor_Black"><br>
+
+        <label for="haircolor_Blond">haircolor_Blond:</label>
+        <input type="number" id="haircolor_Blond" name="haircolor_Blond"><br>
+
+        <label for="haircolor_Brown">haircolor_Brown:</label>
+        <input type="number" id="haircolor_Brown" name="haircolor_Brown"><br>
+
+        <label for="haircolor_Brown_Read">haircolor_Brown_Read:</label>
+        <input type="number" id="haircolor_Brown_Read" name="haircolor_Brown_Read"><br>
+
+        <label for="haircolor_Brown_Red">haircolor_Brown_Red:</label>
+        <input type="number" id="haircolor_Brown_Red" name="haircolor_Brown_Red"><br>
+
+        <label for="haircolor_Red_Red_BI">haircolor_Red_Red_BI:</label>
+        <input type="number" id="haircolor_Red_Red_BI" name="haircolor_Red_Red_BI"><br>
+
+        <label for="haircolor_Y">Hair Color (Y):</label>
+        <input type="number" id="haircolor_Y" name="haircolor_Y"><br>
+
+        <label for="samplescollected_False">Samples Collected (False):</label>
+        <input type="number" id="samplescollected_False" name="samplescollected_False"><br>
+
+        <label for="samplescollected_True">Samples Collected (True):</label>
+        <input type="number" id="samplescollected_True" name="samplescollected_True"><br>
+
+        <label for="area_NE">Area (NE):</label>
+        <input type="number" id="area_NE" name="area_NE"><br>
+
+        <label for="area_NNW">Area (NNW):</label>
+        <input type="number" id="area_NNW" name="area_NNW"><br>
+
+        <label for="area_NW">Area (NW):</label>
+        <input type="number" id="area_NW" name="area_NW"><br>
+
+        <label for="area_SE">Area (SE):</label>
+        <input type="number" id="area_SE" name="area_SE"><br>
+
+        <label for="area_SW">Area (SW):</label>
+        <input type="number" id="area_SW" name="area_SW"><br>
+
+        <label for="ageatdeath_Adult">Age at Death (Adult):</label>
+        <input type="number" id="ageatdeath_Adult" name="ageatdeath_Adult"><br>
+
+        <label for="ageatdeath_Child">Age at Death (Child):</label>
+        <input type="number" id="ageatdeath_Child" name="ageatdeath_Child"><br>
+
+        <label for="ageatdeath_Infant">Age at Death (Infant):</label>
+        <input type="number" id="ageatdeath_Infant" name="ageatdeath_Infant"><br>
+
+        <label for="ageatdeath_Newborn">Age at Death (Newborn):</label>
+        <input type="number" id="ageatdeath_Newborn" name="ageatdeath_Newborn"><br>
+        <!----------------------------------------------------------------------->
+        <label for="Textile_value_Belt_probable_">Textile Value (Belt - Probable):</label>
+        <input type="number" id="Textile_value_Belt_probable_" name="Textile_value_Belt_probable_"><br>
+
+        <label for="Textile_value_Blanket_shroud">Textile Value (Blanket/Shroud):</label>
+        <input type="number" id="Textile_value_Blanket_shroud" name="Textile_value_Blanket_shroud"><br>
+
+        <label for="Textile_value_Blanket_shroud_probable">Textile Value (Blanket/Shroud - Probable):</label>
+        <input type="number" id="Textile_value_Blanket_shroud_probable" name="Textile_value_Blanket_shroud_probable"><br>
+
+        <label for="Textile_value_Cordage">Textile Value (Cordage):</label>
+        <input type="number" id="Textile_value_Cordage" name="Textile_value_Cordage"><br>
+
+        <label for="Textile_value_Face_bundle">Textile value Face bundle:</label>
+        <input type="number" id="Textile_value_Face_bundle" name="Textile_value_Face_bundle"><br>
+
+        <label for="Textile_value_Fragmentary">Textile value Fragmentary:</label>
+        <input type="number" id="Textile_value_Fragmentary" name="Textile_value_Fragmentary"><br>
+
+        <label for="Textile_value_Fragmentary_Unknown">Textile value Fragmentary Unknown:</label>
+        <input type="number" id="Textile_value_Fragmentary_Unknown" name="Textile_value_Fragmentary_Unknown"><br>
+
+        <label for="Textile_value_Head_covering">Textile value Head covering:</label>
+        <input type="number" id="Textile_value_Head_covering" name="Textile_value_Head_covering"><br>
+
+        <label for="Textile_value_Other_Torn_Strip_Binding">Textile value Other Torn Strip Binding:</label>
+        <input type="number" id="Textile_value_Other_Torn_Strip_Binding" name="Textile_value_Other_Torn_Strip_Binding"><br>
+
+        <label for="Textile_value_Ribbon">Textile value Ribbon:</label>
+        <input type="number" id="Textile_value_Ribbon" name="Textile_value_Ribbon"><br>
+
+        <label for="Textile_value_Ribbon_fragment">Textile value Ribbon fragment:</label>
+        <input type="number" id="Textile_value_Ribbon_fragment" name="Textile_value_Ribbon_fragment"><br>
+
+        <label for="Textile_value_Ribbon_Torn_Strip">Textile value Ribbon Torn Strip:</label>
+        <input type="number" id="Textile_value_Ribbon_Torn_Strip" name="Textile_value_Ribbon_Torn_Strip"><br>
+
+        <label for="Textile_value_Rope">Textile value Rope:</label>
+        <input type="number" id="Textile_value_Rope" name="Textile_value_Rope"><br>
+
+        <label for="Textile_value_Tunic">Textile value Tunic:</label>
+        <input type="number" id="Textile_value_Tunic" name="Textile_value_Tunic"><br>
+
+        <label for="Textile_value_Tunic_sewn_fragmentary">Textile value Tunic sewn fragmentary:</label>
+        <input type="number" id="Textile_value_Tunic_sewn_fragmentary" name="Textile_value_Tunic_sewn_fragmentary"><br>
+
+        <label for="Textile_value_Unknown_probably_blanket_shroud">Textile value Unknown probably blanket shroud:</label>
+        <input type="number" id="Textile_value_Unknown_probably_blanket_shroud" name="Textile_value_Unknown_probably_blanket_shroud"><br>
+
+        <label for="Textile_value_small_fragment_of_plain_weave">Textile value small fragment of plain weave:</label>
+        <input type="number" id="Textile_value_small_fragment_of_plain_weave" name="Textile_value_small_fragment_of_plain_weave"><br>
+
+        <label for="thickness_Coarse">Thickness Coarse:</label>
+        <input type="number" id="thickness_Coarse" name="thickness_Coarse"><br>
+
+        <label for="thickness_Extra_fine">Thickness Extra Fine:</label>
+        <input type="number" id="thickness_Extra_fine" name="thickness_Extra_fine"><br>
+
+        <label for="thickness_Fine">Thickness Fine:</label>
+        <input type="number" id="thickness_Fine" name="thickness_Fine"><br>
+
+        <label for="thickness_Fine_medium">Thickness Fine Medium:</label>
+        <input type="number" id="thickness_Fine_medium" name="thickness_Fine_medium"><br>
+
+        <label for="thickness_Medium">Thickness Medium:</label>
+        <input type="number" id="thickness_Medium" name="thickness_Medium"><br>
+
+        <label for="thickness_Very_fine">Thickness Very Fine:</label>
+        <input type="number" id="thickness_Very_fine" name="thickness_Very_fine"><br>
+
+        <label for="thickness_wool">Thickness Wool:</label>
+        <input type="number" id="thickness_wool" name="thickness_wool"><br>
+
+        <label for="manipulation_Edge">Manipulation Edge:</label>
+        <input type="number" id="manipulation_Edge" name="manipulation_Edge"><br>
+
+        <label for="manipulation_Green_yarns">Manipulation Green Yarns:</label>
+        <input type="number" id="manipulation_Green_yarns" name="manipulation_Green_yarns"><br>
+
+        <label for="manipulation_Thread_single_stitch">Manipulation Thread Single Stitch:</label>
+        <input type="number" id="manipulation_Thread_single_stitch" name="manipulation_Thread_single_stitch"><br>
+
+        <label for="manipulation_Warp">Manipulation Warp:</label>
+        <input type="number" id="manipulation_Warp" name="manipulation_Warp"><br>
+
+        <label for="manipulation_Weft">Manipulation Weft:</label>
+        <input type="number" id="manipulation_Weft" name="manipulation_Weft"><br>
+
+        <label for="manipulation_Weft_pile_band">Manipulation Weft Pile Band:</label>
+        <input type="number" id="manipulation_Weft_pile_band" name="manipulation_Weft_pile_band"><br>
+
+        <label for="manipulation_Weft_red">Manipulation Weft Red:</label>
+        <input type="number" id="manipulation_Weft_red" name="manipulation_Weft_red"><br>
+
+        <label for="manipulation_Weft_Ribs">Manipulation Weft Ribs:</label>
+        <input type="number" id="manipulation_Weft_Ribs" name="manipulation_Weft_Ribs"><br>
+
+        <label for="manipulation_Weft_decoration">Manipulation Weft Decoration:</label>
+        <input type="number" id="manipulation_Weft_decoration" name="manipulation_Weft_decoration"><br>
+
+        <label for="material_Linen">Material Linen:</label>
+        <input type="number" id="material_Linen" name="material_Linen"><br>
+
+        <label for="material_Linen_background">Material Linen Background:</label>
+        <input type="number" id="material_Linen_background" name="material_Linen_background" value="0"><br>
+
+        <label for="material_Linen_red">Material Linen Red:</label>
+        <input type="number" id="material_Linen_red" name="material_Linen_red" value="0"><br>
+
+        <label for="material_Linen_very_loosely_spun">Material Linen Very Loosely Spun:</label>
+        <input type="number" id="material_Linen_very_loosely_spun" name="material_Linen_very_loosely_spun" value="0"><br>
+
+        <label for="material_Other">Material Other:</label>
+        <input type="number" id="material_Other" name="material_Other" value="0"><br>
+
+        <label for="material_Other_burlap">Material Other Burlap:</label>
+        <input type="number" id="material_Other_burlap" name="material_Other_burlap" value="0"><br>
+
+        <label for="material_Other_vegetable_fiber">Material Other Vegetable Fiber:</label>
+        <input type="number" id="material_Other_vegetable_fiber" name="material_Other_vegetable_fiber" value="0"><br>
+
+        <label for="material_Wool">Material Wool:</label>
+        <input type="number" id="material_Wool" name="material_Wool" value="0"><br>
+
+        <label for="material_Wool_tapestry">Material Wool Tapestry:</label>
+        <input type="number" id="material_Wool_tapestry" name="material_Wool_tapestry" value="0"><br>
+
+        <label for="material_Wool_thread">Material Wool Thread:</label>
+        <input type="number" id="material_Wool_thread" name="material_Wool_thread" value="0"><br>
+
+        <input type="submit" value="Submit">
+    </form>
+</div>
+
+
+<script>
+      const form = document.getElementById('form');
+    const resultDiv = document.getElementById('resultDiv');
+
+      form.addEventListener('submit', async event => {
+        event.preventDefault();
+
+          const squarenorthsouth = document.getElementById('squarenorthsouth').value;
+          const depth = document.getElementById('depth').value;
+          const southtohead = document.getElementById('southtohead').value;
+          const squareeastwest = document.getElementById('squareeastwest').value;
+          const westtohead = document.getElementById('westtohead').value;
+          const length = document.getElementById('length').value;
+          const burialnumber = document.getElementById('burialnumber').value;
+          const westtofeet = document.getElementById('westtofeet').value;
+          const southtofeet = document.getElementById('southtofeet').value;
+          const fieldbookexcavationyear = document.getElementById('fieldbookexcavationyear').value;
+          const count = document.getElementById('count').value;
+          const headdirection_E = document.getElementById('headdirection_E').value;
+          const headdirection_W = document.getElementById('headdirection_W').value;
+          const northsouth_N = document.getElementById('northsouth_N').value;
+          const eastwest_E = document.getElementById('eastwest_E').value;
+          const eastwest_W = document.getElementById('eastwest_W').value;
+          const adultsubadult_Adult = document.getElementById('adultsubadult_Adult').value;
+          const adultsubadult_Non_Adult = document.getElementById('adultsubadult_Non_Adult').value;
+          const preservation_Badly_deteriorated = document.getElementById('preservation_Badly_deteriorated').value;
+          const preservation_Body_only = document.getElementById('preservation_Body_only').value;
+          const preservation_SKELETON = document.getElementById('preservation_SKELETON').value;
+          const preservation_Skull_only = document.getElementById('preservation_Skull_only').value;
+          const preservation_badly_disturbed = document.getElementById('preservation_badly_disturbed').value;
+          const preservation_badly_preserved = document.getElementById('preservation_badly_preserved').value;
+          const preservation_bones = document.getElementById('preservation_bones').value;
+          const preservation_bones_and_skull = document.getElementById('preservation_bones_and_skull').value;
+          const preservation_disarticulated = document.getElementById('preservation_disarticulated').value;
+          const preservation_fair = document.getElementById('preservation_fair').value;
+          const preservation_good = document.getElementById('preservation_good').value;
+          const preservation_headless_skeleton = document.getElementById('preservation_headless_skeleton').value;
+          const preservation_infested_with_bugs = document.getElementById('preservation_infested_with_bugs').value;
+          const preservation_poor = document.getElementById('preservation_poor').value;
+          const preservation_poorly_preserved = document.getElementById('preservation_poorly_preserved').value;
+          const preservation_scattered_bones = document.getElementById('preservation_scattered_bones').value;
+          const preservation_scattered_bones_with_skull = document.getElementById('preservation_scattered_bones_with_skull').value;
+          const preservation_skeletalized = document.getElementById('preservation_skeletalized').value;
+          const preservation_very_disturbed = document.getElementById('preservation_very_disturbed').value;
+          const preservation_well_wrapped = document.getElementById('preservation_well_wrapped').value;
+          const preservation_wrapped = document.getElementById('preservation_wrapped').value;
+          const preservation_wrapped_bones_showing = document.getElementById('preservation_wrapped_bones_showing').value;
+          const preservation_wrapped_head_showing = document.getElementById('preservation_wrapped_head_showing').value;
+          const goods_N = document.getElementById("goods_N").value;
+          const goods_Y = document.getElementById("goods_Y").value;
+          const haircolor_Black = document.getElementById("haircolor_Black").value;
+          const haircolor_Blond = document.getElementById("haircolor_Blond").value;
+          const haircolor_Brown = document.getElementById("haircolor_Brown").value;
+          const haircolor_Brown_Read = document.getElementById("haircolor_Brown_Read").value;
+          const haircolor_Brown_Red = document.getElementById("haircolor_Brown_Red").value;
+          const haircolor_Red_Red_BI = document.getElementById("haircolor_Red_Red_BI").value;
+          const haircolor_Y = document.getElementById("haircolor_Y").value;
+          const samplescollected_False = document.getElementById("samplescollected_False").value;
+          const samplescollected_True = document.getElementById("samplescollected_True").value;
+          const area_NE = document.getElementById("area_NE").value;
+          const area_NNW = document.getElementById("area_NNW").value;
+          const area_NW = document.getElementById("area_NW").value;
+          const area_SE = document.getElementById("area_SE").value;
+          const area_SW = document.getElementById("area_SW").value;
+          const ageatdeath_Adult = document.getElementById("ageatdeath_Adult").value;
+          const ageatdeath_Child = document.getElementById("ageatdeath_Child").value;
+          const ageatdeath_Infant = document.getElementById("ageatdeath_Infant").value;
+          const ageatdeath_Newborn = document.getElementById("ageatdeath_Newborn").value;
+          const Textile_value_Belt_probable_ = document.getElementById("Textile_value_Belt_probable_").value;
+          const Textile_value_Blanket_shroud = document.getElementById("Textile_value_Blanket_shroud").value;
+          const Textile_value_Blanket_shroud_probable = document.getElementById("Textile_value_Blanket_shroud_probable").value;
+          const Textile_value_Cordage = document.getElementById("Textile_value_Cordage").value;
+          const Textile_value_Face_bundle = document.getElementById("Textile_value_Face_bundle").value;
+          const Textile_value_Fragmentary = document.getElementById("Textile_value_Fragmentary").value;
+          const Textile_value_Fragmentary_Unknown = document.getElementById("Textile_value_Fragmentary_Unknown").value;
+          const Textile_value_Head_covering = document.getElementById("Textile_value_Head_covering").value;
+          const Textile_value_Other_Torn_Strip_Binding = document.getElementById("Textile_value_Other_Torn_Strip_Binding");
+          const Textile_value_Ribbon = document.getElementById("Textile_value_Ribbon").value;
+          const Textile_value_Ribbon_fragment = document.getElementById("Textile_value_Ribbon_fragment").value;
+          const Textile_value_Ribbon_Torn_Strip = document.getElementById("Textile_value_Ribbon_Torn_Strip").value;
+          const Textile_value_Rope = document.getElementById("Textile_value_Rope").value;
+          const Textile_value_Tunic = document.getElementById("Textile_value_Tunic").value;
+          const Textile_value_Tunic_sewn_fragmentary = document.getElementById("Textile_value_Tunic_sewn_fragmentary").value;
+          const Textile_value_Unknown_probably_blanket_shroud = document.getElementById("Textile_value_Unknown_probably_blanket_shroud").value;
+          const Textile_value_small_fragment_of_plain_weave = document.getElementById("Textile_value_small_fragment_of_plain_weave").value;
+          const thickness_Coarse = document.getElementById("thickness_Coarse").value;
+          const thickness_Extra_fine = document.getElementById("thickness_Extra_fine").value;
+          const thickness_Fine = document.getElementById("thickness_Fine").value;
+          const thickness_Fine_medium = document.getElementById("thickness_Fine_medium").value;
+          const thickness_Medium = document.getElementById("thickness_Medium").value;
+          const thickness_Very_fine = document.getElementById("thickness_Very_fine").value;
+          const thickness_wool = document.getElementById("thickness_wool").value;
+
+
+
+      const data = {
+          squarenorthsouth,
+          depth,
+          southtohead,
+          squareeastwest,
+          westtohead,
+          length,
+          burialnumber,
+          westtofeet,
+          southtofeet,
+          fieldbookexcavationyear,
+          count,
+          headdirection_E,
+          headdirection_W,
+          northsouth_N,
+          eastwest_E,
+          eastwest_W,
+          adultsubadult_Adult,
+          adultsubadult_Non_Adult,
+          preservation_Badly_deteriorated,
+          preservation_Body_only,
+          preservation_SKELETON,
+          preservation_Skull_only,
+          preservation_badly_disturbed,
+          preservation_badly_preserved,
+          preservation_bones,
+          preservation_bones_and_skull,
+          preservation_disarticulated,
+          preservation_fair,
+          preservation_good,
+          preservation_headless_skeleton,
+          preservation_infested_with_bugs,
+          preservation_poor,
+          preservation_poorly_preserved,
+          preservation_scattered_bones,
+          preservation_scattered_bones_with_skull,
+          preservation_skeletalized,
+          preservation_very_disturbed,
+          preservation_well_wrapped,
+          preservation_wrapped,
+          preservation_wrapped_bones_showing,
+          preservation_wrapped_head_showing,
+          preservation_wrapped_head_showing,
+          goods_N,
+          goods_Y,
+          haircolor_Black,
+          haircolor_Blond,
+          haircolor_Brown,
+          haircolor_Brown_Read,
+          haircolor_Brown_Red,
+          haircolor_Red_Red_BI,
+          haircolor_Y,
+          samplescollected_False,
+          samplescollected_True,
+          area_NE,
+          area_NNW, 
+          area_NW,
+          area_SE,
+          area_SW,
+          ageatdeath_Adult,
+          ageatdeath_Child,
+          ageatdeath_Infant,
+          ageatdeath_Newborn,
+          Textile_value_Belt_probable_,
+          Textile_value_Blanket_shroud,
+          Textile_value_Blanket_shroud_probable,
+          Textile_value_Cordage,
+          Textile_value_Face_bundle,
+          Textile_value_Fragmentary,
+          Textile_value_Fragmentary_Unknown,
+          Textile_value_Head_covering,
+          Textile_value_Other_Torn_Strip_Binding,
+          Textile_value_Ribbon,
+          Textile_value_Ribbon_fragment,
+          Textile_value_Ribbon_Torn_Strip,
+          Textile_value_Rope,
+          Textile_value_Tunic,
+          Textile_value_Tunic_sewn_fragmentary,
+          Textile_value_Unknown_probably_blanket_shroud,
+          Textile_value_small_fragment_of_plain_weave,
+          thickness_Coarse,
+          thickness_Extra_fine,
+          thickness_Fine,
+          thickness_Fine_medium,
+          thickness_Medium,
+          thickness_Very_fine,
+          thickness_wool
+        };
+
+       const response = await fetch('/44.205.218.73/predict', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+        });
+
+        if (response.ok) {
+            const data = await response.json();
+            resultDiv.innerText = `Predicted value: ${data.predictedValue}`;
+            alert(data.predictedValue)
+        } else {
+            resultDiv.innerText = 'An error occurred while predicting.';
+        }
+    });
+
+
+
+            //squarenorthsouth: document.getElementById('squarenorthsouth').value,
+            //depth: document.getElementById('depth').value,
+            //southtohead: document.getElementById('southtohead').value,
+            //squareeastwest: document.getElementById('squareeastwest').value,
+            //westtohead: document.getElementById('westtohead').value,
+            //length: document.getElementById('length').value,
+            //burialnumber: document.getElementById('burialnumber').value,
+            //westtofeet: document.getElementById('westtofeet').value,
+            //southtofeet: document.getElementById('southtofeet').value,
+            //fieldbookexcavationyear: document.getElementById('fieldbookexcavationyear').value,
+            //count: document.getElementById('count').value,
+            //headdirection_E: document.getElementById('headdirection_E').value,
+            //headdirection_W: document.getElementById('headdirection_W').value,
+            //northsouth_N: document.getElementById('northsouth_N').value,
+            //eastwest_E: document.getElementById('eastwest_E').value,
+            //eastwest_W: document.getElementById('eastwest_W').value,
+
+
+</script>
+
