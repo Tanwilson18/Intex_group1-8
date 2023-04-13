@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 using Intex_group1_8.Models;
 using Intex_group1_8.Models.ViewModels;
 
-namespace Intex_group1_8.Controllers.Infrastructure
+namespace Intex_group1_8.Models.Infrastructure
 {
     [HtmlTargetElement("div", Attributes = "page-model")]
     public class PaginationTagHelper : TagHelper

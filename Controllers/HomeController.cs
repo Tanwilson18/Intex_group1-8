@@ -132,15 +132,9 @@ namespace Intex_group1_8.Controllers
         [HttpPost]
         public IActionResult EditBurialRecord(Burialmain bm)
         {
-            //Burialmain existingBurialMain = repo.Burialmains.SingleOrDefault(b => b.Id == bm.Id);
-            //if (existingBurialMain != null)
-            //{
-
-                //existingBurialMain = bm;
-
             context.Update(bm);
             context.SaveChanges();
-            //}
+       
             return RedirectToAction("BurialSummary");
         }
 
