@@ -14,7 +14,6 @@
     <None Remove="Views\Home\NewFile.txt" />
     <None Remove="Models\ViewModels\" />
     <None Remove="Infrastructure\" />
-    <None Remove="Pages\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -48,8 +47,12 @@
     <Folder Include="Migrations\" />
     <Folder Include="wwwroot\img\" />
     <Folder Include="Models\ViewModels\" />
+<<<<<<< HEAD
+    <Folder Include="Infrastructure\" />
+=======
     <Folder Include="Models\Infrastructure\" />
     <Folder Include="Pages\" />
+>>>>>>> 9dd756be76eaa3aadc70103f98fd6438f8ac5fca
   </ItemGroup>
 
   <ItemGroup>

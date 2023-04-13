@@ -393,8 +393,9 @@ namespace Intex_group1_8.Models
                 entity.ToTable("burialmain");
 
                 entity.Property(e => e.Id)
-                    .HasColumnName("id")
-                    .ValueGeneratedNever();
+                    .ValueGeneratedOnAdd()
+                    .UseIdentityAlwaysColumn()
+                    .HasColumnName("id");
 
                 entity.Property(e => e.Adultsubadult)
                     .HasColumnName("adultsubadult")

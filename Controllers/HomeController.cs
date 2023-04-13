@@ -8,17 +8,21 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Routing;
 
 namespace Intex_group1_8.Controllers
 {
     public class HomeController : Controller
     {
         private IBurialmainRepository repo;
+        private intex2Context context;
 
         // Constructor
-        public HomeController(IBurialmainRepository temp)
+        public HomeController(IBurialmainRepository temp, intex2Context temp2)
         {
             repo = temp;
+            context = temp2;
         }
 
         public IActionResult Index()
@@ -29,7 +33,7 @@ namespace Intex_group1_8.Controllers
         public IActionResult BurialSummary(int pageNum = 1)
         {
 
-            int pageSize = 10;
+            int pageSize = 40;
 
             int TotalCount = 0;
 
@@ -40,7 +44,7 @@ namespace Intex_group1_8.Controllers
             //    from t in repo.Textiles.Where(bt)
             //        on bt.MainTextileid equals t.Id
             //    select new
-            //         { }
+            //    { }
 
             //    from users in Repo.T_User
             //    from mappings in Repo.T_User_Group
@@ -61,7 +65,7 @@ namespace Intex_group1_8.Controllers
 
                 // -- Changing Filtering --
                 Burialmains = repo.Burialmains
-                .OrderBy(b => b.Burialnumber)
+                .OrderBy(b => b.Id)
                 .Skip((pageNum - 1) * pageSize)
                 .Take(pageSize),
 
@@ -88,17 +92,6 @@ namespace Intex_group1_8.Controllers
             return View(returnList);
         }
 
-
-        public IActionResult Supervised()
-        {
-            return View();
-        }
-
-        public IActionResult Unsupervised()
-        {
-            return View();
-        }
-
         [Authorize(Policy = "RequireAdministratorRole")]
         public IActionResult Admin()
         {
@@ -106,6 +99,72 @@ namespace Intex_group1_8.Controllers
         }
 
         public IActionResult Privacy()
+        {
+            return View();
+        }
+
+        // Burial Details
+        [HttpPost]
+        public IActionResult BurialDetails(long Id)
+        {
+            Burialmain bm = repo.Burialmains.Where(b => b.Id == Id).First();
+
+            return View(bm);
+        }
+
+        // Add BurialRecord
+        [HttpGet]
+        public IActionResult AddBurialRecord()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult AddBurialRecord(Burialmain bm)
+        {
+            context.Add(bm);
+            context.SaveChanges();
+
+            return View("Confirmation");
+        }
+
+
+        // Update BurialRecord
+        [HttpPost]
+        public IActionResult EditBurialRecord(Burialmain bm)
+        {
+            context.Update(bm);
+            context.SaveChanges();
+       
+            return RedirectToAction("BurialSummary");
+        }
+
+
+        // Delete BurialRecord
+        [HttpGet]
+        public IActionResult DeleteBurialRecord(int Id)
+        {
+            Burialmain bm = repo.Burialmains.SingleOrDefault(b => b.Id == Id);
+
+            return View(bm);
+        }
+
+        [HttpPost]
+        public IActionResult DeleteBurialRecord(Burialmain bm)
+        {
+            Burialmain existingBurialMain = repo.Burialmains.SingleOrDefault(b => b.Id == bm.Id);
+
+            context.Remove(existingBurialMain);
+            context.SaveChanges();
+
+            return RedirectToAction("BurialSummary");
+        }
+
+        public IActionResult Supervised()
+        {
+            return View();
+        }
+
+        public IActionResult Unsupervised()
         {
             return View();
         }
