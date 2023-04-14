@@ -93,20 +93,6 @@ namespace Intex_group1_8
                 options.ConsentCookie.SecurePolicy = CookieSecurePolicy.Always;
             });
 
-            //services.ConfigureApplicationCookie(options =>
-            //{
-            //    // Cookie settings
-            //    options.Cookie.HttpOnly = true;
-            //    options.ExpireTimeSpan = TimeSpan.FromMinutes(5);
-            //    options.LoginPath = "/Identity/Account/Login";
-            //    options.AccessDeniedPath = "/Identity/Account/AccessDenied";
-            //    options.SlidingExpiration = true;
-            //});
-
-
-
-
-
 
             services.Configure<IdentityOptions>(options =>
             {
@@ -118,7 +104,6 @@ namespace Intex_group1_8
                 options.Password.RequiredLength = 16;
                 options.Password.RequiredUniqueChars = 1;
             });
-
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

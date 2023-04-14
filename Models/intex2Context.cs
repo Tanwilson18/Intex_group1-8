@@ -59,8 +59,7 @@ namespace Intex_group1_8.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseNpgsql("Host=localhost;Database=intex2;Username=postgres;Password=R00ting");
+
             }
         }
 
