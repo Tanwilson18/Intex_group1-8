@@ -172,6 +172,8 @@ namespace Intex_group1_8.Controllers
             return View(bm);
         }
 
+        [Authorize(Policy = "RequireResearcherRole")]
+
         // Add BurialRecord
         [HttpGet]
         public IActionResult AddBurialRecord()
