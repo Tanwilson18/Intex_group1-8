@@ -6,16 +6,30 @@
 
 <div class="container">
     <form method="post" asp-controller="Home" asp-action="AddBurialRecord">
-        @*<input class="d-block" asp-for="Id" type="hidden" /><br />*@
 
         <label asp-for="Sex">Sex:</label>
-        <input asp-for="Sex" /><br />
+        <select asp-for="Sex">
+            <option value=""></option>
+            <option value="M">M</option>
+            <option value="F">F</option>
+        </select><br />
 
         <label asp-for="Ageatdeath">Age At Death:</label>
-        <input asp-for="Ageatdeath" /><br />
+        <select asp-for="Ageatdeath">
+            <option value=""></option>
+            <option value="A">A - Adult</option>
+            <option value="C">C - Child</option>
+            <option value="I">I - Infant</option>
+            <option value="N">N - Newborn</option>
+        </select><br />
 
         <label asp-for="Wrapping">Wrapping:</label>
-        <input asp-for="Wrapping" /><br />
+        <select asp-for="Wrapping">
+            <option value=""></option>
+            <option value="W">W - Fully Wrapped</option>
+            <option value="H">H - Partially Wrapped</option>
+            <option value="B">B - Bones</option>
+        </select><br />
 
         <label asp-for="Squarenorthsouth">North/South Coordinate:</label>
         <input asp-for="Squarenorthsouth" /><br />
@@ -23,15 +37,28 @@
         <input asp-for="Squareeastwest" /><br />
         <label asp-for="Area">Area:</label>
         <input asp-for="Area" /><br />
+        <label asp-for="Burialnumber">Burial Number:</label>
+        <input asp-for="Burialnumber" /><br />
 
         <label asp-for="Haircolor">Hair Color:</label>
-        <input asp-for="Haircolor" /><br />
+        <select asp-for="Haircolor">
+            <option value=""></option>
+            <option value="B">B - Brown</option>
+            <option value="K">K - Black</option>
+            <option value="A">A - Brown-Red</option>
+            <option value="R">R - Red/Red-Blonde</option>
+            <option value="D">D - Blonde</option>
+        </select><br />
 
         <label asp-for="Depth">Depth:</label>
         <input asp-for="Depth" /><br />
 
         <label asp-for="Headdirection">Head Direction:</label>
-        <input asp-for="Headdirection" /><br />
+        <select asp-for="Headdirection">
+            <option value=""></option>
+            <option value="N">N - North</option>
+            <option value="W">W - West</option>
+        </select><br />
 
         <label asp-for="Facebundles">Facebundles:</label>
         <input asp-for="Facebundles" /><br />
