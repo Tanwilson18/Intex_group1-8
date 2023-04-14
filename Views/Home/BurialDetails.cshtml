@@ -37,8 +37,15 @@
         <label asp-for="Facebundles">Facebundles:</label>
         <input asp-for="Facebundles" /><br />
 
+
+        <label>Textile Description: @ViewBag.description</label><br />
+        <label>Textile Color: @ViewBag.color</label><br />
+        <label>Textile Structure: @ViewBag.structure</label><br />
+        <label>Textile Function: @ViewBag.function</label><br />
+
+
         <label asp-for="Text">Text:</label>
-        <input asp-for="Text" /><br />
+        <input class="text-area" asp-for="Text" /><br />
 
         <button class="btn btn-dark" type="submit">Save Changes</button>
     </form>
