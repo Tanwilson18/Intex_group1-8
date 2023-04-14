@@ -18,6 +18,7 @@
 
   <ItemGroup>
     <Content Include=".ebextensions\00_install_certbot.json" />
+	  <Content Include="decision_tree_cleaned.onnx" />
   </ItemGroup>
 
   <ItemGroup>

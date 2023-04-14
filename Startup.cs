@@ -49,12 +49,13 @@ namespace Intex_group1_8
             });
 
             services.AddSingleton<InferenceSession>(
-                  new InferenceSession("decision_tree_cleaned.onnx")
+                  new InferenceSession("wwwroot/decision_tree_cleaned.onnx")
                 );
             services.AddRazorPages();
             services.AddHttpContextAccessor();
             services.AddMvc();
- 
+
+
 
             services.AddAuthorization(options =>
             {
