@@ -141,6 +141,12 @@ namespace Intex_group1_8.Controllers
                 join tf in repo.Textilefunctions on (tftLeft != null ? tftLeft.MainTextilefunctionid : -1) equals tf.Id into tfGroup
                 from tfLeft in tfGroup.DefaultIfEmpty()
 
+                // Join Textiles => Photos
+                join pt in repo.PhotodataTextiles on (tLeft != null ? btLeft.MainTextileid : -1) equals pt.MainTextileid into ptGroup
+                from ptLeft in ptGroup.DefaultIfEmpty()
+                join p in repo.Photodatas on (ptLeft != null ? ptLeft.MainPhotodataid : -1) equals p.Id into pGroup
+                from pLeft in pGroup.DefaultIfEmpty()
+
                 where b.Id == Id
                 select new
                 {
@@ -148,6 +154,7 @@ namespace Intex_group1_8.Controllers
                     color = cLeft.Value,
                     structure = sLeft.Value,
                     function = tfLeft.Value,
+                    photo = pLeft.Url,
                 };
 
             //List<string> tList = new List<string>();
@@ -158,6 +165,7 @@ namespace Intex_group1_8.Controllers
                 ViewBag.color = item.color;
                 ViewBag.structure = item.structure;
                 ViewBag.function = item.function;
+                ViewBag.photo = item.photo;
                 break;
             }
 

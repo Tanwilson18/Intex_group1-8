@@ -14,6 +14,8 @@ namespace Intex_group1_8.Models
         IQueryable<Structure> Structures { get; }
         IQueryable<TextilefunctionTextile> TextilefunctionTextiles { get; }
         IQueryable<Textilefunction> Textilefunctions { get; }
+        IQueryable<PhotodataTextile> PhotodataTextiles { get; }
+        IQueryable<Photodata> Photodatas { get; }
     }
 }
 

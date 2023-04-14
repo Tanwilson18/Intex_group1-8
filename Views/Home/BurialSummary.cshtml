@@ -15,46 +15,67 @@
         <table class="table">
             <tbody>
                 <tr>
-                    <td class="col-1">
-                        <label>Enter Sex: </label>
-                        <input type="text" name="sex" id="sex" />
+                    <td>
+                        <label>Sex: </label><br />
+                        <select name="sex" id="sex">
+                            <option value=""></option>
+                            <option value="M">M</option>
+                            <option value="F">F</option>
+                        </select><br />
                     </td>
-                    <td class="col-1">
-                        <label>Enter Burial Depth: </label>
-                        <input type="text" name="depth" id="depth" />
+                    <td>
+                        <label>Age at Death: </label><br />
+                        <select name="age" id="age">
+                            <option value=""></option>
+                            <option value="A">A - Adult</option>
+                            <option value="C">C - Child</option>
+                            <option value="I">I - Infant</option>
+                            <option value="N">N - Newborn</option>
+                        </select>
                     </td>
-                    <td class="col-1">
-                        <label>Enter Age at Death: </label>
-                        <input type="text" name="age" id="age" />
+                    <td>
+                        <label>Head Direction: </label><br />
+                        <select name="dir" id="dir">
+                            <option value=""></option>
+                            <option value="N">N - North</option>
+                            <option value="W">W - West</option>
+                        </select>
                     </td>
-                    <td class="col-1">
-                        <label>Enter Head Direction: </label>
-                        <input type="text" name="dir" id="dir" />
+                    <td>
+                        <label>Hair Color: </label><br />
+                        <select name="hair" id="hair">
+                            <option value=""></option>
+                            <option value="B">B - Brown</option>
+                            <option value="K">K - Black</option>
+                            <option value="A">A - Brown-Red</option>
+                            <option value="R">R - Red/Red-Blonde</option>
+                            <option value="D">D - Blonde</option>
+                        </select>
                     </td>
-                    <td class="col-1">
-                        <label>Enter Burial Id: </label>
-                        <input type="text" name="burialid" id="burialid" />
-                    </td>
-                    <td class="col-1">
-                        <label>Enter Hair Color: </label>
-                        <input type="text" name="hair" id="hair" />
+                    <td>
+                        <label>Face Bundle: </label><br>
+                        <input type="checkbox" name="bundle" id="bundle" value="Y">
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <label>Enter If Presence of Face Bundle: </label>
-                        <input type="text" name="bundle" id="bundle" />
+                        <label>Burial Id: </label>
+                        <input type="text" name="burialid" id="burialid" />
                     </td>
                     <td>
-                        <label>Enter Textile Color: </label>
+                        <label>Burial Depth: </label>
+                        <input type="text" name="depth" id="depth" />
+                    </td>
+                    <td>
+                        <label>Textile Color: </label>
                         <input type="text" name="color" id="color" />
                     </td>
                     <td>
-                        <label>Enter Textile Structure: </label>
+                        <label>Textile Structure: </label>
                         <input type="text" name="structure" id="structure" />
                     </td>
                     <td>
-                        <label>Enter Textile Function: </label>
+                        <label>Textile Function: </label>
                         <input type="text" name="function" id="function" />
                     </td>
                 </tr>
@@ -75,6 +96,7 @@
             <th class="col-1">Id</th>
             <th class="col-1">Sex</th>
             <th class="col-1">Age at Death</th>
+            <th class="col-1">Burial Depth</th>
             <th class="col-1">Area</th>
             <th class="col-1">Burial Number</th>
             <th>Text</th>
@@ -89,6 +111,7 @@
                 <td>@b.Id</td>
                 <td>@b.Sex</td>
                 <td>@b.Ageatdeath</td>
+                <td>@b.Depth</td>
                 <td>@b.Squarenorthsouth @b.Squareeastwest @b.Area</td>
                 <td>@b.Burialnumber</td>
                 <td>@b.Text</td>

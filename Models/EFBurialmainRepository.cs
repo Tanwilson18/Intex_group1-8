@@ -21,6 +21,8 @@ namespace Intex_group1_8.Models
         public IQueryable<Color> Colors => context.Color;
         public IQueryable<StructureTextile> StructureTextiles => context.StructureTextile;
         public IQueryable<Structure> Structures => context.Structure;
+        public IQueryable<PhotodataTextile> PhotodataTextiles => context.PhotodataTextile;
+        public IQueryable<Photodata> Photodatas => context.Photodata;
     }
 }
 

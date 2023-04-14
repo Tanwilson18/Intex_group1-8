@@ -14,6 +14,8 @@ namespace Intex_group1_8.Models.ViewModels
         public IQueryable<Structure> Structures { get; set; }
         public IQueryable<TextilefunctionTextile> TextilefunctionTextiles { get; set; }
         public IQueryable<Textilefunction> Textilefunctions { get; set; }
+        public IQueryable<Photodata> Photodatas { get; set; }
+        public IQueryable<PhotodataTextile> PhotodataTextiles { get; set; }
 
         public PageInfo PageInfo { get; set; }
     }
