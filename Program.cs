@@ -11,6 +11,7 @@ namespace Intex_group1_8
 {
     public class Program
     {
+        static string ONNX_MODEL_PATH = "decision_tree_cleaned.onnx";
         public static void Main(string[] args)
         {
             CreateHostBuilder(args).Build().Run();
