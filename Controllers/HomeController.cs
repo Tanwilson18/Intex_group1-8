@@ -103,7 +103,6 @@ namespace Intex_group1_8.Controllers
         }
 
 
-        [Authorize(Policy = "RequireResearcherRole")]
         public IActionResult Privacy()
         {
             return View();
@@ -188,6 +187,7 @@ namespace Intex_group1_8.Controllers
             return View("Confirmation");
         }
 
+        [Authorize(Policy = "RequireResearcherRole")]
 
         // Update BurialRecord
         [HttpPost]
@@ -199,7 +199,7 @@ namespace Intex_group1_8.Controllers
             return RedirectToAction("BurialSummary");
         }
 
-
+        [Authorize(Policy = "RequireResearcherRole")]
         // Delete BurialRecord
         [HttpGet]
         public IActionResult DeleteBurialRecord(int Id)
@@ -208,6 +208,7 @@ namespace Intex_group1_8.Controllers
 
             return View(bm);
         }
+        [Authorize(Policy = "RequireResearcherRole")]
 
         [HttpPost]
         public IActionResult DeleteBurialRecord(Burialmain bm)

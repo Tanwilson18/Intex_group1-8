@@ -5,78 +5,81 @@
 @model Burialmain
 
 <div class="container form-control-static">
-    <form method="post" asp-controller="Home" asp-action="EditBurialRecord" class="form-control-static">
-        <h2 class="text-center">@Model.Id</h2>
+    <strong>
+        <form method="post" asp-controller="Home" asp-action="EditBurialRecord" class="form-control-static">
+            <h2 class="text-center">@Model.Id</h2>
 
-        <img class="center" style="height:100" src="@ViewBag.photo" /><br /><br />
-        <input type="hidden" asp-for="Id">
+            <img class="center" style="height:100" src="@ViewBag.photo" /><br /><br />
+            <input type="hidden" asp-for="Id">
 
-        <label asp-for="Sex">Sex:</label>
-        <select asp-for="Sex">
-            <option value=""></option>
-            <option value="M">M</option>
-            <option value="F">F</option>
-        </select><br />
+            <label asp-for="Sex">Sex:</label>
+            <select asp-for="Sex">
+                <option value=""></option>
+                <option value="M">M</option>
+                <option value="F">F</option>
+            </select><br />
 
-        <label asp-for="Ageatdeath">Age At Death:</label>
-        <select asp-for="Ageatdeath">
-            <option value=""></option>
-            <option value="A">A - Adult</option>
-            <option value="C">C - Child</option>
-            <option value="I">I - Infant</option>
-            <option value="N">N - Newborn</option>
-        </select><br />
+            <label asp-for="Ageatdeath">Age At Death:</label>
+            <select asp-for="Ageatdeath">
+                <option value=""></option>
+                <option value="A">A - Adult</option>
+                <option value="C">C - Child</option>
+                <option value="I">I - Infant</option>
+                <option value="N">N - Newborn</option>
+            </select><br />
 
-        <label asp-for="Wrapping">Wrapping:</label>
-        <select asp-for="Wrapping">
-            <option value=""></option>
-            <option value="W">W - Fully Wrapped</option>
-            <option value="H">H - Partially Wrapped</option>
-            <option value="B">B - Bones</option>
-        </select><br />
+            <label asp-for="Wrapping">Wrapping:</label>
+            <select asp-for="Wrapping">
+                <option value=""></option>
+                <option value="W">W - Fully Wrapped</option>
+                <option value="H">H - Partially Wrapped</option>
+                <option value="B">B - Bones</option>
+            </select><br />
 
-        <label asp-for="Squarenorthsouth">North/South Coordinate:</label>
-        <input asp-for="Squarenorthsouth" /><br />
-        <label asp-for="Squareeastwest">East/West Coordinate:</label>
-        <input asp-for="Squareeastwest" /><br />
-        <label asp-for="Area">Area:</label>
-        <input asp-for="Area" /><br />
-        <label asp-for="Burialnumber">Burial Number:</label>
-        <input asp-for="Burialnumber" /><br />
+            <label asp-for="Squarenorthsouth">North/South Coordinate:</label>
+            <input asp-for="Squarenorthsouth" /><br />
+            <label asp-for="Squareeastwest">East/West Coordinate:</label>
+            <input asp-for="Squareeastwest" /><br />
+            <label asp-for="Area">Area:</label>
+            <input asp-for="Area" /><br />
+            <label asp-for="Burialnumber">Burial Number:</label>
+            <input asp-for="Burialnumber" /><br />
 
-        <label asp-for="Haircolor">Hair Color:</label>
-        <select asp-for="Haircolor">
-            <option value=""></option>
-            <option value="B">B - Brown</option>
-            <option value="K">K - Black</option>
-            <option value="A">A - Brown-Red</option>
-            <option value="R">R - Red/Red-Blonde</option>
-            <option value="D">D - Blonde</option>
-        </select><br />
+            <label asp-for="Haircolor">Hair Color:</label>
+            <select asp-for="Haircolor">
+                <option value=""></option>
+                <option value="B">B - Brown</option>
+                <option value="K">K - Black</option>
+                <option value="A">A - Brown-Red</option>
+                <option value="R">R - Red/Red-Blonde</option>
+                <option value="D">D - Blonde</option>
+            </select><br />
 
-        <label asp-for="Depth">Depth:</label>
-        <input asp-for="Depth" /><br />
+            <label asp-for="Depth">Depth:</label>
+            <input asp-for="Depth" /><br />
 
-        <label asp-for="Headdirection">Head Direction:</label>
-        <select asp-for="Headdirection">
-            <option value=""></option>
-            <option value="N">N - North</option>
-            <option value="W">W - West</option>
-        </select><br />
+            <label asp-for="Headdirection">Head Direction:</label>
+            <select asp-for="Headdirection">
+                <option value=""></option>
+                <option value="N">N - North</option>
+                <option value="W">W - West</option>
+            </select><br />
 
-        <label asp-for="Facebundles">Facebundles:</label>
-        <input asp-for="Facebundles" /><br />
+            <label asp-for="Facebundles">Facebundles:</label>
+            <input asp-for="Facebundles" /><br />
 
-        <label>Textile Description: @ViewBag.description</label><br />
-        <label>Textile Color: @ViewBag.color</label><br />
-        <label>Textile Structure: @ViewBag.structure</label><br />
-        <label>Textile Function: @ViewBag.function</label><br />
+            <label>Textile Description: @ViewBag.description</label><br />
+            <label>Textile Color: @ViewBag.color</label><br />
+            <label>Textile Structure: @ViewBag.structure</label><br />
+            <label>Textile Function: @ViewBag.function</label><br />
 
 
-        <label asp-for="Text">Text:</label>
-        <input class="text-area" asp-for="Text" /><br />
+            <label asp-for="Text">Text:</label>
+            <input class="text-area" asp-for="Text" /><br />
 
-        <button class="btn btn-dark" type="submit">Save Changes</button>
-    </form>
-    <a class="btn btn-dark" asp-action="BurialSummary" asp-controller="Home">Back</a>
+            <button class="btn btn-dark" type="submit">Save Changes</button>
+        </form>
+        <br />
+        <a class="btn btn-dark" asp-action="BurialSummary" asp-controller="Home">Back</a>
+    </strong>
 </div>

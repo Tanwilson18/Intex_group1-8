@@ -1,7 +1,9 @@
 ﻿@{
     ViewData["Title"] = "Burial Summary";
 }
-
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
 @model BurialmainViewModel
 
 <div class="text-center">
@@ -107,28 +109,31 @@
     <tbody>
         @foreach (Burialmain b in Model.Burialmains)
         {
-            <tr>
-                <td>@b.Id</td>
-                <td>@b.Sex</td>
-                <td>@b.Ageatdeath</td>
-                <td>@b.Depth</td>
-                <td>@b.Squarenorthsouth @b.Squareeastwest @b.Area</td>
-                <td>@b.Burialnumber</td>
-                <td>@b.Text</td>
+        <tr>
+            <td>@b.Id</td>
+            <td>@b.Sex</td>
+            <td>@b.Ageatdeath</td>
+            <td>@b.Depth</td>
+            <td>@b.Squarenorthsouth @b.Squareeastwest @b.Area</td>
+            <td>@b.Burialnumber</td>
+            <td>@b.Text</td>
 
-                <td class="text-center text-align-center">
-                    <form method="get" asp-action="BurialDetails" asp-controller="Home">
-                        <input name="Id" type="hidden" value=@b.Id id="Id">
-                        <button class="btn btn-dark justify-content-center" type="submit">Burial Details</button>
-                    </form>
-                </td>
+            <td class="text-center text-align-center">
+                <form method="get" asp-action="BurialDetails" asp-controller="Home">
+                    <input name="Id" type="hidden" value=@b.Id id="Id">
+                    <button class="btn btn-dark justify-content-center" type="submit">Burial Details</button>
+                </form>
+            </td>
+            @if (SignInManager.IsSignedIn(User))
+            {
                 <td class="text-center text-align-center">
                     <form method="get" asp-action="DeleteBurialRecord" asp-controller="Home">
                         <input name="Id" type="hidden" value=@b.Id id="Id">
                         <button class="btn btn-dark justify-content-center" type="submit">Delete</button>
                     </form>
                 </td>
-            </tr>
+            }
+        </tr>
         }
     </tbody>
 </table>

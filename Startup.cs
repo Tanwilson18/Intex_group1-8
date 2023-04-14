@@ -11,6 +11,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 using Microsoft.ML.OnnxRuntime;
 using Microsoft.OpenApi.Models;
 using System;
@@ -23,6 +24,7 @@ namespace Intex_group1_8
     public class Startup
     {
         public IConfiguration Configuration { get; }
+
 
         public Startup(IConfiguration config)
         {
@@ -169,6 +171,7 @@ namespace Intex_group1_8
                 IdentitySeedData.Initialize(context, userMgr, roleMgr).Wait();
             }
         }
+
     }
 }
  
