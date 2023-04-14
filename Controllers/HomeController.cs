@@ -217,18 +217,6 @@ namespace Intex_group1_8.Controllers
             return RedirectToAction("BurialSummary");
         }
 
-        public IActionResult UpdateBurialId()
-        {
-            foreach (Burialmain bm in repo.Burialmains)
-            {
-                bm.Burialid = (bm.Squarenorthsouth + " " + bm.Northsouth + " " + bm.Squareeastwest + " " + bm.Eastwest + " " + bm.Area + " " + bm.Burialnumber);
-                context.Update(bm);
-                context.SaveChanges();
-            }
-
-            return View("BurialSummary");
-        }
-
         public IActionResult Supervised()
         {
             return View();
