@@ -17,7 +17,7 @@ namespace Intex_group1_8.Data
 
             string asdminRole = "Admin";
             string researcherRole = "Researcher";
-            string password4all = "Medellin";
+            string password4all = "IntexRootbeerSpencer";
 
             if (await roleManager.FindByNameAsync(asdminRole) == null)
             {
@@ -29,13 +29,12 @@ namespace Intex_group1_8.Data
                 await roleManager.CreateAsync(new IdentityRole(researcherRole));
             }
 
-            if (await userManager.FindByNameAsync("admin@admin.com") == null)
+            if (await userManager.FindByNameAsync("admin@mummy.com") == null)
             {
                 var user = new IdentityUser
                 {
-                    UserName = "admin@admin.com",
-                    Email = "admin@admin.com",
-                    PhoneNumber = "6902341234"
+                    UserName = "admin@mummy.com",
+                    Email = "admin@mummy.com",
                 };
 
                 var result = await userManager.CreateAsync(user);
@@ -46,13 +45,12 @@ namespace Intex_group1_8.Data
                 }
             }
 
-            if (await userManager.FindByNameAsync("rr@mm.mm") == null)
+            if (await userManager.FindByNameAsync("ta@ta.ta") == null)
             {
                 var user = new IdentityUser
                 {
-                    UserName = "rr@mm.mm",
-                    Email = "rr@mm.mm",
-                    PhoneNumber = "1112223333"
+                    UserName = "ta@ta.ta",
+                    Email = "ta@ta.ta",
                 };
 
                 var result = await userManager.CreateAsync(user);

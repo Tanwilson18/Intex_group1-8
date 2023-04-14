@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Routing;
 using Intex_group1_8.Data;
+using Microsoft.AspNetCore.Identity;
 
 namespace Intex_group1_8.Controllers
 {
@@ -21,13 +22,14 @@ namespace Intex_group1_8.Controllers
 
 
         private ApplicationDbContext context;
+        private UserManager<IdentityUser> userManager;
 
 
-        public AdminController(ILogger<AdminController> logger, ApplicationDbContext temp)
+        public AdminController(ILogger<AdminController> logger, ApplicationDbContext temp, UserManager<IdentityUser> usrMgr)
         {
             _logger = logger;
             context = temp;
-
+            userManager = usrMgr;
 
         }
 
@@ -55,5 +57,43 @@ namespace Intex_group1_8.Controllers
 
             return View(UserJoin);
         }
+
+            [Authorize(Roles = "RequireAdministratorRole")]
+            public async Task<IActionResult> Update(string Id)
+            {
+                IdentityUser user = await userManager.FindByIdAsync(Id);
+                if (user != null)
+                    return RedirectToAction("Users");
+                else
+                    return RedirectToAction("Users");
+            }
+            [HttpPost]
+            public async Task<IActionResult> Update(string Id, string Role)
+            {
+                IdentityUser user = await userManager.FindByIdAsync(Id);
+                var link = context.UserRoles.Single(x => x.UserId == user.Id);
+                var rolerow = context.Roles.Single(x => link.RoleId == x.Id);
+                rolerow.Name = Role;
+                //IdentityRole role = await manage.   RManager.FindByIdAsync(Id)
+                if (user != null)
+                {
+
+                    IdentityResult result = await userManager.UpdateAsync(user);
+
+                    if (result.Succeeded)
+                        return RedirectToAction("Users");
+                    else
+                        Errors(result);
+                }
+                else
+                    ModelState.AddModelError("", "User Not Found");
+                return RedirectToAction("Users");
+            }
+            private void Errors(IdentityResult result)
+            {
+                foreach (IdentityError error in result.Errors)
+                    ModelState.AddModelError("", error.Description);
+            }
+        
     }
 }
