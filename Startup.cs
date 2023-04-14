@@ -51,6 +51,12 @@ namespace Intex_group1_8
                      policy => policy.RequireRole("Admin"));
             });
 
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("RequireResearcherRole",
+                     policy => policy.RequireRole("Researcher", "Admin"));
+            });
+
             // This is the default connection DB for the user login info
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));
@@ -61,6 +67,8 @@ namespace Intex_group1_8
 
             services.AddScoped<IBurialmainRepository, EFBurialmainRepository>();
 
+
+            //cookie stuff
             services.Configure<CookiePolicyOptions>(options =>
             {
                 // This lambda determines whether user consent for non-essential 
@@ -68,7 +76,22 @@ namespace Intex_group1_8
                 options.CheckConsentNeeded = context => true;
                 // requires using Microsoft.AspNetCore.Http;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
+                options.ConsentCookie.SecurePolicy = CookieSecurePolicy.Always;
             });
+
+            //services.ConfigureApplicationCookie(options =>
+            //{
+            //    // Cookie settings
+            //    options.Cookie.HttpOnly = true;
+            //    options.ExpireTimeSpan = TimeSpan.FromMinutes(5);
+            //    options.LoginPath = "/Identity/Account/Login";
+            //    options.AccessDeniedPath = "/Identity/Account/AccessDenied";
+            //    options.SlidingExpiration = true;
+            //});
+
+
+
+
 
 
             services.Configure<IdentityOptions>(options =>

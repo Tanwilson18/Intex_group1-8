@@ -98,6 +98,7 @@ namespace Intex_group1_8.Controllers
             return View();
         }
 
+        [Authorize(Policy = "RequireResearcherRole")]
         public IActionResult Privacy()
         {
             return View();
