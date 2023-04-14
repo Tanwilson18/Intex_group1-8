@@ -92,11 +92,6 @@ namespace Intex_group1_8.Controllers
             return View(returnList);
         }
 
-        [Authorize(Policy = "RequireAdministratorRole")]
-        public IActionResult Admin()
-        {
-            return View();
-        }
 
         [Authorize(Policy = "RequireResearcherRole")]
         public IActionResult Privacy()
