@@ -35,7 +35,10 @@ namespace Intex_group1_8.Controllers
             //Tensor<string> predict = result.First().AsTensor<string>();
             //string predictionValue = predict.ToArray()[0];
             //var prediction = new Prediction { PredictedValue = predictionValue };
+            Response.Headers.Add("Access-Control-Allow-Origin", "*");
+
             return Ok(prediction);
+
         }
     }
 }
