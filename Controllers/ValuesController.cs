@@ -37,7 +37,7 @@ namespace Intex_group1_8.Controllers
             //var prediction = new Prediction { PredictedValue = predictionValue };
             Response.Headers.Add("Access-Control-Allow-Origin", "*");
 
-            return Ok(prediction);
+            return Ok(predict);
 
         }
     }
