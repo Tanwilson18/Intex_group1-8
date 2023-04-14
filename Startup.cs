@@ -110,12 +110,12 @@ namespace Intex_group1_8
 
             services.Configure<IdentityOptions>(options =>
             {
-                // Default Password settings. CHANGE THIS
+                // Password Settings
                 options.Password.RequireDigit = false;
                 options.Password.RequireLowercase = false;
                 options.Password.RequireNonAlphanumeric = false;
                 options.Password.RequireUppercase = false;
-                options.Password.RequiredLength = 1;
+                options.Password.RequiredLength = 16;
                 options.Password.RequiredUniqueChars = 1;
             });
 
