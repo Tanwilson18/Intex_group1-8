@@ -7,6 +7,64 @@
 <div class="text-center">
     <h1 class="display-4">Burial Summary</h1>
 </div>
+
+<a></a>
+
+<div class="text-center text-align-center">
+    <form method="get" asp-action="BurialSummary" asp-controller="Home">
+        <table class="table">
+            <tbody>
+                <tr>
+                    <td class="col-1">
+                        <label>Enter Sex: </label>
+                        <input type="text" name="sex" id="sex" />
+                    </td>
+                    <td class="col-1">
+                        <label>Enter Burial Depth: </label>
+                        <input type="text" name="depth" id="depth" />
+                    </td>
+                    <td class="col-1">
+                        <label>Enter Age at Death: </label>
+                        <input type="text" name="age" id="age" />
+                    </td>
+                    <td class="col-1">
+                        <label>Enter Head Direction: </label>
+                        <input type="text" name="dir" id="dir" />
+                    </td>
+                    <td class="col-1">
+                        <label>Enter Burial Id: </label>
+                        <input type="text" name="burialid" id="burialid" />
+                    </td>
+                    <td class="col-1">
+                        <label>Enter Hair Color: </label>
+                        <input type="text" name="hair" id="hair" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Enter If Presence of Face Bundle: </label>
+                        <input type="text" name="bundle" id="bundle" />
+                    </td>
+                    <td>
+                        <label>Enter Textile Color: </label>
+                        <input type="text" name="color" id="color" />
+                    </td>
+                    <td>
+                        <label>Enter Textile Structure: </label>
+                        <input type="text" name="structure" id="structure" />
+                    </td>
+                    <td>
+                        <label>Enter Textile Function: </label>
+                        <input type="text" name="function" id="function" />
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <button class="btn btn-dark justify-content-center" type="submit">Filter</button>
+    </form>
+</div>
+
 <a class="btn btn-dark float-right" asp-controller="Home" asp-action="AddBurialRecord">Add Record</a>
 
 <table class="table table-bordered table-striped">

@@ -30,59 +30,69 @@ namespace Intex_group1_8.Controllers
             return View();
         }
 
-        public IActionResult BurialSummary(int pageNum = 1)
+        public IActionResult BurialSummary(string sex, string depth, string age, string dir, string burialid, string hair, string bundle, string color, string structure, string function, int pageNum = 1)
         {
 
             int pageSize = 40;
 
             int TotalCount = 0;
 
-            //var l =
+            //var burialList =
             //    from b in repo.Burialmains
-            //    from bt in repo.BurialmainTextiles.Where(bt => b.Id == bt.MainBurialmainid)
-            //    .DefaultIfEmpty()
-            //    from t in repo.Textiles.Where(bt)
-            //        on bt.MainTextileid equals t.Id
+            //    join bt in repo.BurialmainTextiles
+            //    on b.Id equals bt.MainBurialmainid
+            //    join t in repo.Textiles
+            //    on bt.MainTextileid equals t.Id
             //    select new
-            //    { }
+            //    {
+            //        BMid = b.Id 
+            //    };
 
-            //    from users in Repo.T_User
-            //    from mappings in Repo.T_User_Group
-            //         .Where(mapping => mapping.USRGRP_USR == users.USR_ID)
-            //         .DefaultIfEmpty() // <== makes join left join
-            //    from groups in Repo.T_Group
-            //         .Where(gruppe => gruppe.GRP_ID == mappings.USRGRP_GRP)
-            //         .DefaultIfEmpty()
-            TotalCount = repo.Burialmains
-                .OrderBy(b => b.Area)
-                .Skip((pageNum - 1) * pageSize)
-                .Take(pageSize)
-                .Count();
+
+            //TotalCount = burialList.Count();
 
             var returnList = new BurialmainViewModel
             {
                 // Grabbing Burialmains from DB for each page
 
-                // -- Changing Filtering --
+            // -- Changing Filtering --
                 Burialmains = repo.Burialmains
-                .OrderByDescending(b => b.Id)
-                .Skip((pageNum - 1) * pageSize)
-                .Take(pageSize),
+                    .Where(b => (b.Sex == sex || sex == null)
+                        && (b.Depth == depth || depth == null)
+                        && (b.Ageatdeath == age || age == null)
+                        && (b.Headdirection == dir || dir == null)
+                        //&& (b.Burialid == long.Parse(burialid) || burialid == null)
+                        && (b.Haircolor == hair || hair == null)
+                        && (b.Facebundles == bundle || bundle == null))
+                    .OrderByDescending(b => b.Id)
+                    .Skip((pageNum - 1) * pageSize)
+                    .Take(pageSize),
+
+                Colors = repo.Colors
+                    .Where(c => c.Value == color || color == null),
+                Structures = repo.Structures
+                    .Where(s => s.Value == structure || structure == null),
+                Textilefunctions = repo.Textilefunctions
+                    .Where(f => f.Value == function || function == null),
 
                 BurialmainTextiles = repo.BurialmainTextiles,
                 Textiles = repo.Textiles,
                 TextilefunctionTextiles = repo.TextilefunctionTextiles,
-                Textilefunctions = repo.Textilefunctions,
                 ColorTextiles = repo.ColorTextiles,
-                Colors = repo.Colors,
-                Structures = repo.Structures,
                 StructureTextiles = repo.StructureTextiles,
 
                 // Creating PageInfo for BurialmainViewModel
                 PageInfo = new PageInfo
                 {
                     // Insert Filtering stuff
-                    TotalNumResults = repo.Burialmains.Count(),
+                    TotalNumResults = repo.Burialmains
+                    .Where(b => (b.Sex == sex || sex == null)
+                        && (b.Depth == depth || depth == null)
+                        && (b.Ageatdeath == age || age == null)
+                        && (b.Headdirection == dir || dir == null)
+                        //&& (b.Burialid == long.Parse(burialid) || burialid == null)
+                        && (b.Haircolor == hair || hair == null)
+                        && (b.Facebundles == bundle || bundle == null)).Count(),
                     //TotalNumResults = TotalCount,
                     ResultsPerPage = pageSize,
                     CurrentPage = pageNum
@@ -92,12 +102,8 @@ namespace Intex_group1_8.Controllers
             return View(returnList);
         }
 
-        [Authorize(Policy = "RequireAdministratorRole")]
-        public IActionResult Admin()
-        {
-            return View();
-        }
 
+        [Authorize(Policy = "RequireResearcherRole")]
         public IActionResult Privacy()
         {
             return View();
@@ -109,6 +115,53 @@ namespace Intex_group1_8.Controllers
         {
             Burialmain bm = repo.Burialmains.Single(b => b.Id == Id);
 
+            var burialList =
+                // Join Burialmain => Textiles
+                from b in repo.Burialmains
+                join bt in repo.BurialmainTextiles on b.Id equals bt.MainBurialmainid into btGroup
+                from btLeft in btGroup.DefaultIfEmpty()
+                join t in repo.Textiles on (btLeft != null ? btLeft.MainTextileid : -1) equals t.Id into tGroup
+                from tLeft in tGroup.DefaultIfEmpty()
+
+                // Join Textiles => Colors
+                join ct in repo.ColorTextiles on (tLeft != null ? btLeft.MainTextileid : -1) equals ct.MainTextileid into ctGroup
+                from ctLeft in ctGroup.DefaultIfEmpty()
+                join c in repo.Colors on (ctLeft != null ? ctLeft.MainColorid : -1) equals c.Id into cGroup
+                from cLeft in cGroup.DefaultIfEmpty()
+
+                // Join Textiles => Structures
+                join st in repo.StructureTextiles on (tLeft != null ? btLeft.MainTextileid : -1) equals st.MainTextileid into stGroup
+                from stLeft in stGroup.DefaultIfEmpty()
+                join s in repo.Structures on (stLeft != null ? stLeft.MainStructureid : -1) equals s.Id into sGroup
+                from sLeft in sGroup.DefaultIfEmpty()
+
+                // Join Textiles => Functions
+                join tft in repo.TextilefunctionTextiles on (tLeft != null ? btLeft.MainTextileid : -1) equals tft.MainTextileid into tftGroup
+                from tftLeft in tftGroup.DefaultIfEmpty()
+                join tf in repo.Textilefunctions on (tftLeft != null ? tftLeft.MainTextilefunctionid : -1) equals tf.Id into tfGroup
+                from tfLeft in tfGroup.DefaultIfEmpty()
+
+                where b.Id == Id
+                select new
+                {
+                    description = tLeft.Description,
+                    color = cLeft.Value,
+                    structure = sLeft.Value,
+                    function = tfLeft.Value,
+                };
+
+            //List<string> tList = new List<string>();
+
+            foreach (var item in burialList)
+            {
+                ViewBag.description = item.description;
+                ViewBag.color = item.color;
+                ViewBag.structure = item.structure;
+                ViewBag.function = item.function;
+                break;
+            }
+
+            //ViewBag.tdList = tdList;
             return View(bm);
         }
 
