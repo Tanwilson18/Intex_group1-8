@@ -9,7 +9,7 @@
         <form method="post" asp-controller="Home" asp-action="EditBurialRecord" class="form-control-static">
             <h2 class="text-center">@Model.Id</h2>
 
-            <img class="center" style="height:100" src="@ViewBag.photo" /><br /><br />
+            @*<img class="center" style="height:100" src="@ViewBag.photo" /><br /><br />*@
             <input type="hidden" asp-for="Id">
 
             <label asp-for="Sex">Sex:</label>
